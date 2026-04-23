@@ -1,14 +1,18 @@
-# DaSt-2026
+# DaSt-2026: TODO
 
 Data Science project 2026.
 
+
+TODO - topic
+TODO - use case
+
 ---
 
-## File organisation
+# File organisation
 
 All paths are relative to the repository root. Every file follows `snake_case` with no spaces. Version suffixes use `_vN` (integer N). Dates use `YYYYMMDD`.
 
-### Directory layout
+## Directory layout
 
 ```
 DaSt-2026/
@@ -25,7 +29,7 @@ DaSt-2026/
 
 ---
 
-### Convention rules
+## Convention rules
 
 | Category | Location | Pattern | Example |
 |---|---|---|---|
@@ -39,7 +43,7 @@ DaSt-2026/
 
 ---
 
-### Field definitions
+## Field definitions
 
 **`{dataset}`** — short, stable name for the source dataset (e.g. `census`, `titanic`).
 
@@ -57,7 +61,7 @@ DaSt-2026/
 
 ---
 
-### Configuration format — YAML
+## Configuration format — YAML
 
 All config files live in `config/` and use `.yaml`. One file per concern:
 
@@ -87,7 +91,7 @@ with open("config/model.yaml") as f:
 
 ---
 
-### Extension conventions
+## Extension conventions
 
 | Format | Preferred extension | Use for |
 |---|---|---|
@@ -100,7 +104,7 @@ with open("config/model.yaml") as f:
 
 ---
 
-### Examples
+## Examples
 
 ```
 data/raw/census_train_v1.csv
@@ -124,7 +128,7 @@ config/model.yaml
 
 ---
 
-### Update policy
+## Update policy
 
 Update this section whenever:
 - a new category of file is introduced,
