@@ -1,0 +1,24 @@
+# version: 1
+# Dataset and preprocessing configuration.
+# Bump version comment when any value that affects reproducibility changes.
+
+#####
+## THIS IS A SAMPLE FILE. PLEASE CHANGE WHEN NEEDED!!!!
+####
+
+dataset:
+  name: census          # matches {dataset} field in file naming convention
+  raw_path: data/raw/census_full_v1.csv
+  processed_path: data/processed/census_encoded_v1.parquet
+
+splits:
+  test_size: 0.2        # fraction held out for final evaluation
+  val_size: 0.1         # fraction of train used for validation
+  random_seed: 42       # fix for reproducibility
+
+preprocessing:
+  drop_duplicates: true
+  drop_na: true
+  target_column: income
+  categorical_encoding: ordinal   # options: ordinal | onehot
+  scale_features: true            # StandardScaler applied to numeric columns

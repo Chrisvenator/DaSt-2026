@@ -1,0 +1,23 @@
+# version: 1
+# Evaluation and output configuration.
+
+
+#####
+## THIS IS A SAMPLE FILE. PLEASE CHANGE WHEN NEEDED!!!!
+####
+
+
+metrics:
+  - accuracy
+  - f1_weighted
+  - roc_auc
+  - confusion_matrix
+
+classification_threshold: 0.5    # applied to predicted probabilities
+
+outputs:
+  figures_dir: outputs/figures
+  report_dir: docs
+  save_confusion_matrix: true
+  save_roc_curve: true
+  figure_format: png              # options: png | pdf

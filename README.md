@@ -55,6 +55,32 @@ DaSt-2026/
 
 **`{NN}`** — two-digit zero-padded stage index enforcing execution order (`01`, `02`, …). Utility / helper scripts with no fixed order use the prefix `util_`.
 
+---
+
+### Configuration format — YAML
+
+All config files live in `config/` and use `.yaml`. One file per concern:
+
+| File | Purpose |
+|---|---|
+| `config/data.yaml` | dataset paths, split ratios, preprocessing flags |
+| `config/model.yaml` | algorithm choice, hyperparameters, random seed |
+| `config/eval.yaml` | metrics to compute, threshold values, output paths |
+
+**Loading in Python:**
+
+```python
+import yaml
+
+with open("config/model.yaml") as f:
+    cfg = yaml.safe_load(f)
+```
+
+**Rules:**
+- All keys `snake_case`.
+- Secrets (API keys, passwords) go in `.env`, never in YAML — reference them via environment variables.
+- Bump the comment `# version:` field when changing values that affect reproducibility.
+
 **`{vN}`** — monotonically increasing integer version starting at `1`. Bump when inputs or parameters change in a non-trivial way.
 
 **`{YYYYMMDD}`** — ISO 8601 date (e.g. `20260423`).
@@ -67,7 +93,7 @@ DaSt-2026/
 |---|---|---|
 | Tabular data | `.csv`, `.parquet` | datasets |
 | Model artefact | `.pkl`, `.joblib`, `.pt` | serialised models |
-| Config | `.yaml` | all configuration |
+| Config | `.yaml` | all configuration — **YAML chosen over TOML/JSON because it supports inline comments, is the standard format in ML tooling (DVC, MLflow, Hydra, scikit-learn pipelines), and loads with no extra dependency (`PyYAML` ships with most ML stacks)** |
 | Plot | `.png` (raster), `.pdf` (vector) | figures |
 | Notebook | `.ipynb` | exploratory analysis only — not pipeline steps |
 | Documentation | `.md` | notes, reports |
