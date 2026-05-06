@@ -9,3 +9,6 @@
 /W1_submission.txt
 /venv/*
 /venv
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+src/dbrepo_ingestion_guide.ipynb

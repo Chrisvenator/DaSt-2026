@@ -128,6 +128,18 @@ config/model.yaml
 
 ---
 
+## Database schema
+
+The relational schema (3NF) is defined in `docs/schema.sql` with descriptive
+seed data for all coded attributes. The ER diagram (`docs/ER_diagram.png`)
+is rendered from `docs/schema.dbml`; paste that file at https://dbdiagram.io
+to regenerate.
+
+The schema is instantiated in DBRepo via `src/notebooks/t2_1_dbrepo_schema.ipynb`,
+which uses the DBRepo REST API to create the database, tables and seed lookup
+rows with full citable metadata (publisher: UK Department for Transport;
+license: Open Government Licence v3.0).
+
 ## Update policy
 
 Update this section whenever:

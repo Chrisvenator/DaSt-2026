@@ -1,0 +1,157 @@
+// Road Traffic Accidents (STATS19) 2009–2013 – North Yorkshire
+// Lookup descriptions cross-checked against the official DfT codebook
+// "2-attributecodesforroadsafetyinformation.xls".
+
+
+Table severity_type {
+  severity_id  smallint    [pk, note: "1=Fatal, 2=Serious, 3=Slight, 4=Damage only"]
+  description  varchar(64) [not null]
+  Note: "STATS19 accident severity (field: Severity)"
+}
+
+Table road_surface_condition {
+  condition_id smallint    [pk, note: "0=N/A, 1=Dry, 2=Wet/damp, 3=Snow, 4=Frost/ice, 5=Flood, 9=Unknown"]
+  description  varchar(64) [not null]
+  Note: "STATS19 road surface condition (field: Road_cond)"
+}
+
+Table light_condition {
+  condition_id smallint    [pk, note: "1=Daylight; 4–7=Darkness variants; 10–13=pre-2011 daylight subcategories"]
+  description  varchar(80) [not null]
+  Note: "STATS19 lighting / visibility conditions (field: Visibility)"
+}
+
+Table weather_condition {
+  condition_id smallint    [pk, note: "0=N/A, 1=Fine, 2=Rain, 3=Snow (no high winds); 4–6 same with high winds; 7=Fog, 8=Other, 9=Unknown"]
+  description  varchar(64) [not null]
+  Note: "STATS19 weather conditions (field: Weather)"
+}
+
+Table special_condition_at_site {
+  condition_id smallint    [pk, note: "0=N/A, 1=Auto signal out, 2=Auto signal partly defective, 3=Sign/marking defective, 4=Roadworks, 5=Surface defective, 6=Oil/diesel, 7=Mud, 9=Unknown"]
+  description  varchar(80) [not null]
+  Note: "STATS19 special conditions at accident site (field: Spcond)"
+}
+
+Table carriageway_hazard {
+  hazard_id   smallint    [pk, note: "0=N/A, 1=Dislodged load, 2=Other object, 3=Prev acc, 6=Pedestrian (uninjured), 7=Animal, 9=Unknown"]
+  description varchar(64) [not null]
+  Note: "STATS19 carriageway hazard (field: Carr_haz)"
+}
+
+Table road_type {
+  type_id     smallint    [pk, note: "0=Not coded, 1=Roundabout, 2=One way, 3=Dual carriageway, 6=Single carriageway, 7=Slip road, 9=Unknown"]
+  description varchar(48) [not null]
+  Note: "STATS19 road geometry/type (field: Road_type)"
+}
+
+Table road_class {
+  class_id    smallint    [pk, note: "1=Motorway, 2=A(M), 3=A, 4=B, 5=C, 6=Unclassified, 9=Unknown"]
+  description varchar(48) [not null]
+  Note: "STATS19 road classification (fields: Roadclass1, Roadclass2)"
+}
+
+Table junction_detail {
+  detail_id   smallint    [pk, note: "0=Not within 20m, 1=Roundabout, 2=Mini rbt, 3=T/staggered, 5=Slip, 6=Crossroads, 7=>4 arms, 8=Private drive, 9=Other, 99=Unknown"]
+  description varchar(64) [not null]
+  Note: "STATS19 junction detail (field: Junct_det)"
+}
+
+Table junction_control {
+  control_id  smallint    [pk, note: "0=Not at junction, 1=Authorised person, 2=Auto signal, 3=Stop sign, 4=Give way/controlled, 9=Unknown"]
+  description varchar(64) [not null]
+  Note: "STATS19 junction control (field: Junct_ctrl)"
+}
+
+Table pedestrian_crossing_control {
+  control_id  smallint    [pk, note: "0=None within 50m, 1=School crossing patrol, 2=Other authorised person, 9=Unknown"]
+  description varchar(80) [not null]
+  Note: "STATS19 pedestrian crossing human control (field: Cross_ctrl)"
+}
+
+Table pedestrian_crossing_facility {
+  facility_id smallint    [pk, note: "0=No facility, 1=Zebra, 4=Pelican/puffin, 5=Ped phase at signals, 7=Footbridge/subway, 8=Central refuge, 9=Unknown"]
+  description varchar(80) [not null]
+  Note: "STATS19 pedestrian crossing facility (field: Cross_fac)"
+}
+
+Table reporting_authority {
+  authority_id smallint    [pk, note: "1=Yes (at scene), 2=No (over the counter), 3=No (self-completion form)"]
+  description  varchar(80) [not null]
+  Note: "Whether the accident was reported at the scene (field: Reportedat)"
+}
+
+// Geography tables 
+
+Table police_force {
+  force_id   smallint     [pk]
+  force_name varchar(128) [not null]
+  Note: "UK police force – this dataset only contains North Yorkshire (code 12)"
+}
+
+Table local_authority_district {
+  lad12_code     varchar(9)   [pk, note: "ONS 2012 GSS code (field: LAD12CD)"]
+  lad12_code_old varchar(8)   [not null, note: "Legacy ONS code (field: LAD12CDO)"]
+  lad_name       varchar(128) [not null, note: "English LAD name (field: LAD12NM)"]
+  Note: "ONS Local Authority District 2012 boundary, North Yorkshire (publisher: Office for National Statistics)"
+}
+
+Table lower_super_output_area {
+  lsoa_id    smallint   [pk, note: "Integer LSOA key as stored in CSV (field: LSOA11CD)"]
+  lsoa_name  varchar(32) [not null, note: "ONS 2011 LSOA name (field: LSOA11NM)"]
+  lad12_code varchar(9)  [not null, ref: > local_authority_district.lad12_code]
+  Note: "ONS 2011 Lower Super Output Area"
+}
+
+Table output_area {
+  oa11_code            varchar(9)    [pk, note: "ONS 2011 OA GSS code (field: OA11CD)"]
+  lsoa_id              smallint      [not null, ref: > lower_super_output_area.lsoa_id]
+  area_hectares        numeric(10,4) [not null, note: "Land area in hectares (field: AREA_HECT)"]
+  rurality_code        varchar(4)    [not null, note: "ONS RUC 2011 code (field: RU_DEF_COD)"]
+  rurality_description varchar(16)   [not null, note: "ONS RUC short label (field: RU_DEF_DES)"]
+  rural_urban          varchar(8)    [not null, note: "'Rural' or 'Urban' (field: Rural or Urban)"]
+  Note: "ONS 2011 Census Output Area with Rural Urban Classification 2011"
+}
+
+// Fact tables
+
+Table accident {
+  police_ref             bigint        [pk, note: "STATS19 unique reference (field: Police_ref)"]
+  accident_date          date          [not null, note: "Date of accident (field: Date)"]
+  accident_time          time          [not null, note: "Time of accident (field: Time)"]
+  day_of_week            smallint      [not null, note: "1=Sun … 7=Sat (field: Day)"]
+  easting                integer       [not null, note: "BNG Easting metres, EPSG:27700 (field: Easting)"]
+  northing               integer       [not null, note: "BNG Northing metres, EPSG:27700 (field: Northing)"]
+  longitude              numeric(10,7) [not null, note: "WGS84 decimal degrees, EPSG:4326 (field: Longitude)"]
+  latitude               numeric(10,7) [not null, note: "WGS84 decimal degrees, EPSG:4326 (field: Latitude)"]
+  casualties             smallint      [not null, note: "Total casualties (field: Casualties)"]
+  vehicles               smallint      [not null, note: "Vehicles involved (field: Vehicles)"]
+  speed_limit_mph        smallint      [not null, note: "Posted speed limit in mph (field: Speed_lim)"]
+  severity_id            smallint      [not null, ref: > severity_type.severity_id]
+  road_cond_id           smallint      [not null, ref: > road_surface_condition.condition_id]
+  light_condition_id     smallint      [not null, ref: > light_condition.condition_id]
+  weather_condition_id   smallint      [not null, ref: > weather_condition.condition_id]
+  special_condition_id   smallint      [not null, ref: > special_condition_at_site.condition_id]
+  carriageway_hazard_id  smallint      [not null, ref: > carriageway_hazard.hazard_id]
+  road_type_id           smallint      [not null, ref: > road_type.type_id]
+  junction_detail_id     smallint      [not null, ref: > junction_detail.detail_id]
+  junction_control_id    smallint      [not null, ref: > junction_control.control_id]
+  crossing_control_id    smallint      [not null, ref: > pedestrian_crossing_control.control_id]
+  crossing_facility_id   smallint      [not null, ref: > pedestrian_crossing_facility.facility_id]
+  force_id               smallint      [not null, ref: > police_force.force_id]
+  oa11_code              varchar(9)    [not null, ref: > output_area.oa11_code]
+  reporting_authority_id smallint      [not null, ref: > reporting_authority.authority_id]
+  Note: "One row per STATS19 road traffic accident, 2009–2013, North Yorkshire. Publisher: UK Dept for Transport. License: OGL v3."
+}
+
+Table accident_road {
+  accident_road_id serial   [pk]
+  police_ref       bigint   [not null, ref: > accident.police_ref]
+  road_sequence    smallint [not null, note: "1 = first road, 2 = second road"]
+  road_class_id    smallint [not null, ref: > road_class.class_id]
+  road_number      integer  [not null, note: "0 = unclassified / no number"]
+  Note: "Roads involved per accident – extracts repeating Roadclass1/Roadnum1 + Roadclass2/Roadnum2 pairs into 3NF child table"
+  indexes {
+    (police_ref, road_sequence) [unique]
+  }
+}

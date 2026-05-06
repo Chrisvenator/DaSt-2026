@@ -1,0 +1,26 @@
+{
+  "endpoint": "https://test.dbrepo.tuwien.ac.at",
+  "database_id": "f36ef3e2-1aee-4526-b3ea-82f661a9261a",
+  "container_id": "6cfb3b8e-1792-4e46-871a-f3d103527203",
+  "tables": {
+    "accident_road": "94a5897e-d5a1-413e-a9ac-c07880113561",
+    "accident": "157f0987-94d3-4f4e-bf8c-894d7758ca38",
+    "output_area": "1e4fbed4-4d75-4661-9735-e5de32d3b381",
+    "lower_super_output_area": "f0c8e35e-77cd-4c26-9677-1099bc465a38",
+    "local_authority_district": "b8306b03-e124-44a6-98c1-27366ee75ab5",
+    "police_force": "1fa7506a-00fc-4371-8240-22538b7cd523",
+    "reporting_authority": "4f0de1d6-10ea-4d77-8ab6-5600bf16d9d9",
+    "pedestrian_crossing_facility": "63a6fd20-149a-4097-a93c-967b9a60705e",
+    "pedestrian_crossing_control": "0e0703d5-6b0f-4886-9d4b-041733cf3d0b",
+    "junction_control": "51cdc9eb-bf1d-4e2f-9a61-e3def09c35d9",
+    "junction_detail": "00438d68-3aec-40bf-9a9b-60d3461ddcb2",
+    "road_class": "4d703d15-02f3-4076-a30c-110aa48f0c3c",
+    "road_type": "1e213b79-fecb-412b-9aab-5ea610c85635",
+    "carriageway_hazard": "f4aa9ddf-9ddf-4be2-9285-0505a9d3cbb1",
+    "special_condition_at_site": "c2c9d09d-9379-43fb-b8dc-dba69e0ba2ac",
+    "weather_condition": "4ac67574-33c8-41f5-8209-4f41dbf7dc2a",
+    "light_condition": "8ea97cfa-7ce0-40df-a2dd-b69a8352d0ad",
+    "road_surface_condition": "a3d07330-a8d3-4578-b053-47046c331672",
+    "severity_type": "dd43b86b-aae8-4a9f-a071-ca6b356d2440"
+  }
+}
