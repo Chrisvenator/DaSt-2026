@@ -64,6 +64,38 @@ Keep the examples table current.
 
 ---
 
+## Python style
+
+**Names**: `snake_case` vars/functions, `PascalCase` classes, `UPPER_CASE` module-level constants.
+
+**Functions**: One job each. If you need "and" to describe it, split it. Max ~30 lines. Type-hint all signatures:
+```python
+def compute_metric(data: np.ndarray, threshold: float) -> np.ndarray:
+```
+
+**Imports**: stdlib → third-party → local. No wildcard imports (`from x import *`).
+
+**Comments**: Explain *why*, not *what*. Self-explanatory code needs no comment.
+
+**Constants**: Magic values at module top, not buried in logic.
+
+**Error handling**: Only at system boundaries (file I/O, raw data parsing). Don't wrap internal logic in try/except.
+
+**Data code**: Vectorize. No row-by-row loops on DataFrames.
+```python
+# BAD
+for i, row in df.iterrows():
+    df.loc[i, 'label'] = 1 if row['z'] < thr else 0
+# GOOD
+df['label'] = (df['z'] < thr).astype(int)
+```
+
+**Paths**: `pathlib.Path` only, never `os.path`.
+
+**No over-engineering**: No abstract base classes, factory patterns, or config objects unless reuse is proven. Three similar lines beat a premature abstraction.
+
+---
+
 ## General
 
 - No comments explaining what code does — only non-obvious why.
