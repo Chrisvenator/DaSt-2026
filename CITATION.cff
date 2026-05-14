@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "DaSt-2026: Road Safety Analysis"
+authors:
+  - family-names: Scherling
+    given-names: Christopher
+    email: christopher.scherling@gmail.com
+version: 1.0.0
+date-released: "2026-05-14"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.20182653
+url: "https://doi.org/10.5281/zenodo.20182653"
+license: GNU General Public License v3.0
