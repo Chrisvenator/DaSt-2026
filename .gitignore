@@ -6,9 +6,13 @@
 /.idea/misc.xml
 /.idea/modules.xml
 /.idea/vcs.xml
+/.idea/*
 /W1_submission.txt
 /venv/*
 /venv
 .ipynb_checkpoints/
 *.ipynb_checkpoints
 src/dbrepo_ingestion_guide.ipynb
+/2026-Dast-Excercise-Part3.md
+/2026-Dast-Excercise-Part3.pdf
+/API_documentation.md
