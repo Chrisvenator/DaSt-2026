@@ -142,6 +142,60 @@ which uses the DBRepo REST API to create the database, tables and seed lookup
 rows with full citable metadata (publisher: UK Department for Transport;
 license: Open Government Licence v3.0).
 
+## Source Data and Citation
+
+### Underlying Dataset
+
+| Field | Value |
+|---|---|
+| Title | Road Safety Data – North Yorkshire Highways Authority (2009–2013) |
+| Original publisher | UK Department for Transport |
+| Original collector | North Yorkshire Police, via the UK STATS19 reporting system |
+| Republisher | North Yorkshire County Council (Open Data Hub) |
+| Access portal | European Data Portal (data.europa.eu) |
+| Source URL | https://data.europa.eu/data/datasets/road-safety-data?locale=en |
+| Upstream URL | https://data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-safety-data |
+| License | UK Open Government Licence v3.0 |
+| License URL | https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/ |
+| Records | 8,358 accidents |
+| Temporal coverage | 2009–01–01 to 2013–12–31 |
+| Geographic coverage | North Yorkshire Police force area, England |
+
+### Re-publication in DBRepo
+
+This project re-publishes the dataset in a relational schema normalised to Third
+Normal Form (19 tables) on the TU Wien DBRepo test instance.
+
+| Field | Value |
+|---|---|
+| Repository | TU Wien DBRepo (test instance) |
+| Endpoint | https://test.dbrepo.tuwien.ac.at |
+| Database UUID | f36ef3e2-1aee-4526-b3ea-82f661a9261a |
+| Database name | rta_stats19_north_yorkshire |
+| Container UUID | 6cfb3b8e-1792-4e46-871a-f3d103527203 (MariaDB Galera 11.3.2) |
+| Tables | 19 (see docs/schema.sql) |
+| Schema | 3NF; ER diagram at docs/er-diagram.png |
+
+### Citation
+
+When citing this re-published database, please attribute both the original
+publisher and this project:
+
+> UK Department for Transport. *Road Safety Data – North Yorkshire Highways
+> Authority (2009–2013)*. Originally published on data.gov.uk, accessed via
+> the European Data Portal. Re-published in 3NF schema by Group A
+> (DaSt 2026, TU Wien), TU Wien DBRepo test instance, database UUID
+> `f36ef3e2-1aee-4526-b3ea-82f661a9261a`, under the UK Open Government
+> Licence v3.0.
+
+### Status of citable identifier
+
+A DataCite identifier for the DBRepo deposit was attempted via
+`POST /api/v1/identifier` but encountered an HTTP 500 on the test instance
+on 2026-05-07; the issue has been reported to the DBRepo maintainer and will
+be added once resolved. See `src/notebooks/t2_1_dbrepo_schema.ipynb`
+(Section 8) for the prepared payload.
+
 ## Update policy
 
 Update this section whenever:
