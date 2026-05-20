@@ -22,5 +22,13 @@
     "light_condition": "8ea97cfa-7ce0-40df-a2dd-b69a8352d0ad",
     "road_surface_condition": "a3d07330-a8d3-4578-b053-47046c331672",
     "severity_type": "dd43b86b-aae8-4a9f-a071-ca6b356d2440"
+  },
+  "views_database_id": "629a32a9-9451-442d-a145-0a0fc57fa080",
+  "views": {
+    "ml_accident_features": "22400fbd-6d65-423d-acdf-67134d7bd708",
+    "ml_fatal_accidents": "2a2a05a2-584c-4bc1-8887-a4219c9a2064",
+    "ml_serious_accidents": "18b8a45a-5212-41e9-ab66-731d5e98f586",
+    "ml_rural_accidents": "fff6cdc6-2fd3-4e7c-b06d-ac2e209aec9d",
+    "ml_high_speed_accidents": "60fdc323-c758-458a-8660-c937481a358d"
   }
 }
