@@ -25,10 +25,10 @@
   },
   "views_database_id": "629a32a9-9451-442d-a145-0a0fc57fa080",
   "views": {
-    "ml_accident_features": "22400fbd-6d65-423d-acdf-67134d7bd708",
-    "ml_fatal_accidents": "2a2a05a2-584c-4bc1-8887-a4219c9a2064",
-    "ml_serious_accidents": "18b8a45a-5212-41e9-ab66-731d5e98f586",
-    "ml_rural_accidents": "fff6cdc6-2fd3-4e7c-b06d-ac2e209aec9d",
-    "ml_high_speed_accidents": "60fdc323-c758-458a-8660-c937481a358d"
+    "ml_accident_features": "45b21a9f-1b85-4035-8f1f-4fb699b70f5e",
+    "ml_fatal_accidents": "2aa96a2e-7712-4dd6-b8a6-5e22f9f65ff8",
+    "ml_serious_accidents": "c227209b-b343-4be1-8dce-cc5b80713249",
+    "ml_rural_accidents": "cd39a570-eaee-4264-ac05-2c7a7fdc8e6b",
+    "ml_high_speed_accidents": "3f339d05-9cf6-4aa8-b7f7-bcf2a1693860"
   }
 }
