@@ -254,11 +254,11 @@ View SQL is in `docs/views.sql`. Views are created via `src/t2_4_views.ipynb`.
 
 The final experiment predicts accident severity (`severity_id`: 1 = fatal, 2 = serious, 3 = slight) from the DBRepo view `ml_accident_features`.
 
-The experiment is implemented in `src/train.py` and configured through:
+The experiment is implemented in `src/train_experiment.py` and configured through:
 
-- `configs/data.yaml`
-- `configs/model.yaml`
-- `configs/eval.yaml`
+- `config/data.yaml`
+- `config/model.yaml`
+- `config/eval.yaml`
 
 The data is loaded exclusively from the DBRepo REST API. No local CSV files are used in the final experiment code. The main DBRepo view endpoint is:
 
