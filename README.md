@@ -250,6 +250,25 @@ View SQL is in `docs/views.sql`. Views are created via `src/t2_4_views.ipynb`.
 
 ---
 
+## ML experiment
+
+The final experiment predicts accident severity (`severity_id`: 1 = fatal, 2 = serious, 3 = slight) from the DBRepo view `ml_accident_features`.
+
+The experiment is implemented in `src/train.py` and configured through:
+
+- `configs/data.yaml`
+- `configs/model.yaml`
+- `configs/eval.yaml`
+
+The data is loaded exclusively from the DBRepo REST API. No local CSV files are used in the final experiment code. The main DBRepo view endpoint is:
+
+`/api/v1/database/f36ef3e2-1aee-4526-b3ea-82f661a9261a/view/45b21a9f-1b85-4035-8f1f-4fb699b70f5e/data`
+
+Authentication uses HTTP Basic Auth via the environment variables `DBREPO_USERNAME` and `DBREPO_PASSWORD`.
+
+The final model is a Random Forest classifier with class balancing enabled. The model artefact, predictions, metrics, and confusion matrix are written to the `outputs/` directory.
+
+
 ## Update policy
 
 Update this section whenever:
