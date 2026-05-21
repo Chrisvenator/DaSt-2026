@@ -254,6 +254,20 @@ View SQL is in `docs/views.sql`. Views are created via `src/t2_4_views.ipynb`.
 
 The final experiment predicts accident severity (`severity_id`: 1 = fatal, 2 = serious, 3 = slight) from the DBRepo view `ml_accident_features`.
 
+| Item | Description |
+|---|---|
+| Experiment ID | `severity_rf_baseline_v1` |
+| Task | Multiclass accident severity classification |
+| Input data | DBRepo REST API view `ml_accident_features` |
+| Target column | `severity_id` |
+| Classes | `1 = fatal`, `2 = serious`, `3 = slight` |
+| Model | `RandomForestClassifier` |
+| Test split | 20% |
+| Random seed | 42 |
+| Stratification | By `severity_id` |
+
+The model uses accident context, road condition, weather condition, lighting condition, location, speed limit, vehicle count, casualty count, and rural/urban features. Identifier and descriptive columns such as `police_ref`, `accident_date`, `accident_time`, and `lad_name` are not used as model features.
+
 The experiment is implemented in `src/train_experiment.py` and configured through:
 
 - `config/data.yaml`
@@ -267,7 +281,6 @@ The data is loaded exclusively from the DBRepo REST API. No local CSV files are 
 Authentication uses HTTP Basic Auth via the environment variables `DBREPO_USERNAME` and `DBREPO_PASSWORD`.
 
 The final model is a Random Forest classifier with class balancing enabled. The model artefact, predictions, metrics, and confusion matrix are written to the `outputs/` directory.
-
 
 ## Update policy
 
