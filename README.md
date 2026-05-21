@@ -196,6 +196,60 @@ on 2026-05-07; the issue has been reported to the DBRepo maintainer and will
 be added once resolved. See `src/notebooks/t2_1_dbrepo_schema.ipynb`
 (Section 8) for the prepared payload.
 
+## DBRepo REST API (T2.6)
+
+All experiment data is loaded exclusively from the DBRepo REST API.
+No local CSV reads are used in the final pipeline code.
+
+**Base URL**: `https://test.dbrepo.tuwien.ac.at`
+
+**Authentication**: HTTP Basic Auth — `Authorization: Basic base64(username:password)`.
+Credentials are read from `src/dbrepo_ids.json` (username/password stored separately;
+never commit secrets to the repository).
+
+**Endpoints used**:
+
+| Method | Path | Parameters | Purpose |
+|--------|------|------------|---------|
+| `GET` | `/api/v1/database/{database_id}/view/{view_id}/data` | `page` (0-based), `size` | Fetch one page of view rows |
+
+**Accept header required**: `Accept: application/json`  
+**Response**: JSON array of row objects; empty array signals end of results.  
+**Pagination**: increment `page` until the response array is shorter than `size`.
+
+**Views available**:
+
+| View name | View UUID | Filter | Rows |
+|-----------|-----------|--------|------|
+| `ml_accident_features` | `45b21a9f-1b85-4035-8f1f-4fb699b70f5e` | — | 8 358 |
+| `ml_fatal_accidents` | `2aa96a2e-7712-4dd6-b8a6-5e22f9f65ff8` | severity_id = 1 | 197 |
+| `ml_serious_accidents` | `c227209b-b343-4be1-8dce-cc5b80713249` | severity_id = 2 | 1 828 |
+| `ml_rural_accidents` | `cd39a570-eaee-4264-ac05-2c7a7fdc8e6b` | rural_urban = 'Rural' | 5 973 |
+| `ml_high_speed_accidents` | `3f339d05-9cf6-4aa8-b7f7-bcf2a1693860` | speed_limit_mph ≥ 60 | 4 970 |
+
+See `src/t2_6_api_reimplementation.ipynb` for the full loader implementation and
+verification that results are identical to the original local-file version.
+
+---
+
+## DBRepo Views (T2.4)
+
+Five named SQL views expose query-ready projections of the accident data.
+All share the same 25-column projection joined across three tables
+(`accident → output_area → lower_super_output_area → local_authority_district`).
+
+| View | Purpose |
+|------|---------|
+| `ml_accident_features` | Full de-normalised feature table — primary training dataset |
+| `ml_fatal_accidents` | Fatal accidents only (severity = 1) — minority-class subset for oversampling |
+| `ml_serious_accidents` | Serious accidents only (severity = 2) — minority-class subset |
+| `ml_rural_accidents` | Rural-area accidents — geographic stratification slice |
+| `ml_high_speed_accidents` | Roads with speed limit ≥ 60 mph — speed-conditioned analysis slice |
+
+View SQL is in `docs/views.sql`. Views are created via `src/t2_4_views.ipynb`.
+
+---
+
 ## Update policy
 
 Update this section whenever:
