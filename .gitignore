@@ -13,6 +13,8 @@
 .ipynb_checkpoints/
 *.ipynb_checkpoints
 src/t2_4_views.ipynb
+src/__pycache__/
+src/dbrepo_ingestion_guide.ipynb
 /2026-Dast-Excercise-Part3.md
 /2026-Dast-Excercise-Part3.pdf
 /API_documentation.md
