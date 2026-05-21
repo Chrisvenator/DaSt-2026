@@ -1,0 +1,291 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "ml": "http://mlcommons.org/croissant/",
+    "sc": "https://schema.org/",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "si": "https://si-digital-framework.org/SI/"
+  },
+  "@type": "Dataset",
+  "@id": "https://test.dbrepo.tuwien.ac.at/api/v1/database/f36ef3e2-1aee-4526-b3ea-82f661a9261a",
+  "name": "Road Safety Data – North Yorkshire (STATS19, 2009–2013)",
+  "description": "Road traffic accident records for the North Yorkshire Police force area, England, 2009–2013, derived from the UK STATS19 data collection system. The dataset covers 8 358 accidents with attributes including severity, road conditions, weather, geographic coordinates, junction details, and linked census geography (output area, LSOA, local authority district). Re-published in a 19-table Third Normal Form relational schema on the TU Wien DBRepo test instance; five ML-ready views are exposed via REST API.",
+  "url": "https://test.dbrepo.tuwien.ac.at/api/v1/database/f36ef3e2-1aee-4526-b3ea-82f661a9261a",
+  "sameAs": "https://data.europa.eu/data/datasets/road-safety-data?locale=en",
+  "license": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+  "version": "1.0.0",
+  "datePublished": "2009",
+  "dateModified": "2026-05-21",
+  "inLanguage": "en",
+  "keywords": [
+    "road safety",
+    "traffic accidents",
+    "STATS19",
+    "North Yorkshire",
+    "severity classification",
+    "machine learning",
+    "UK open data"
+  ],
+  "creator": {
+    "@type": "Organization",
+    "name": "North Yorkshire Police / UK Department for Transport",
+    "url": "https://www.gov.uk/government/organisations/department-for-transport"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "North Yorkshire County Council (Open Data Hub) via European Data Portal",
+    "url": "https://data.europa.eu"
+  },
+  "distribution": [
+    {
+      "@type": "ml:FileObject",
+      "@id": "distribution-dbrepo-view",
+      "name": "ml_accident_features (DBRepo REST API)",
+      "description": "Full de-normalised feature table exposed as a DBRepo view. Fetch via GET /api/v1/database/{db_id}/view/{view_id}/data with Accept: application/json and HTTP Basic Auth. Paginate with query params page (0-based) and size.",
+      "contentUrl": "https://test.dbrepo.tuwien.ac.at/api/v1/database/f36ef3e2-1aee-4526-b3ea-82f661a9261a/view/45b21a9f-1b85-4035-8f1f-4fb699b70f5e/data",
+      "encodingFormat": "application/json"
+    },
+    {
+      "@type": "ml:FileObject",
+      "@id": "distribution-dbrepo-fatal",
+      "name": "ml_fatal_accidents (DBRepo REST API)",
+      "description": "Fatal accidents only (severity_id = 1), 197 rows.",
+      "contentUrl": "https://test.dbrepo.tuwien.ac.at/api/v1/database/f36ef3e2-1aee-4526-b3ea-82f661a9261a/view/2aa96a2e-7712-4dd6-b8a6-5e22f9f65ff8/data",
+      "encodingFormat": "application/json"
+    },
+    {
+      "@type": "ml:FileObject",
+      "@id": "distribution-dbrepo-serious",
+      "name": "ml_serious_accidents (DBRepo REST API)",
+      "description": "Serious accidents only (severity_id = 2), 1 828 rows.",
+      "contentUrl": "https://test.dbrepo.tuwien.ac.at/api/v1/database/f36ef3e2-1aee-4526-b3ea-82f661a9261a/view/c227209b-b343-4be1-8dce-cc5b80713249/data",
+      "encodingFormat": "application/json"
+    },
+    {
+      "@type": "ml:FileObject",
+      "@id": "distribution-dbrepo-rural",
+      "name": "ml_rural_accidents (DBRepo REST API)",
+      "description": "Rural-area accidents (rural_urban = 'Rural'), 5 973 rows.",
+      "contentUrl": "https://test.dbrepo.tuwien.ac.at/api/v1/database/f36ef3e2-1aee-4526-b3ea-82f661a9261a/view/cd39a570-eaee-4264-ac05-2c7a7fdc8e6b/data",
+      "encodingFormat": "application/json"
+    },
+    {
+      "@type": "ml:FileObject",
+      "@id": "distribution-dbrepo-highspeed",
+      "name": "ml_high_speed_accidents (DBRepo REST API)",
+      "description": "High-speed road accidents (speed_limit_mph >= 60), 4 970 rows.",
+      "contentUrl": "https://test.dbrepo.tuwien.ac.at/api/v1/database/f36ef3e2-1aee-4526-b3ea-82f661a9261a/view/3f339d05-9cf6-4aa8-b7f7-bcf2a1693860/data",
+      "encodingFormat": "application/json"
+    }
+  ],
+  "ml:recordSet": [
+    {
+      "@type": "ml:RecordSet",
+      "@id": "ml-accident-features",
+      "name": "ml_accident_features",
+      "description": "Full de-normalised feature table for ML training. One row per accident. Contains all coded attribute columns from the accident fact table plus rural/urban flag, output area size, and local authority district name resolved from the geographic hierarchy.",
+      "ml:source": {
+        "@id": "distribution-dbrepo-view"
+      },
+      "ml:field": [
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/police_ref",
+          "name": "police_ref",
+          "description": "Unique accident reference number assigned by the reporting police force.",
+          "ml:dataType": "sc:Integer"
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/accident_date",
+          "name": "accident_date",
+          "description": "Calendar date on which the accident occurred (ISO 8601).",
+          "ml:dataType": "sc:Date"
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/accident_time",
+          "name": "accident_time",
+          "description": "Time of day at which the accident occurred (ISO 8601 time).",
+          "ml:dataType": "sc:Time"
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/day_of_week",
+          "name": "day_of_week",
+          "description": "Day of the week encoded as an integer (1 = Sunday … 7 = Saturday, STATS19 coding).",
+          "ml:dataType": "sc:Integer",
+          "sc:unitCode": "http://qudt.org/vocab/unit/UNITLESS"
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/easting",
+          "name": "easting",
+          "description": "Easting coordinate in the British National Grid (OSGB36), in metres.",
+          "ml:dataType": "sc:Integer",
+          "sc:unitCode": "https://si-digital-framework.org/SI/units/m"
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/northing",
+          "name": "northing",
+          "description": "Northing coordinate in the British National Grid (OSGB36), in metres.",
+          "ml:dataType": "sc:Integer",
+          "sc:unitCode": "https://si-digital-framework.org/SI/units/m"
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/longitude",
+          "name": "longitude",
+          "description": "WGS84 longitude of the accident location, in decimal degrees.",
+          "ml:dataType": "sc:Float",
+          "sc:unitCode": "http://qudt.org/vocab/unit/DEG"
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/latitude",
+          "name": "latitude",
+          "description": "WGS84 latitude of the accident location, in decimal degrees.",
+          "ml:dataType": "sc:Float",
+          "sc:unitCode": "http://qudt.org/vocab/unit/DEG"
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/severity_id",
+          "name": "severity_id",
+          "description": "Accident severity: 1 = Fatal, 2 = Serious, 3 = Slight. FK → severity_type.",
+          "ml:dataType": "sc:Integer",
+          "ml:isEnumeration": true
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/road_cond_id",
+          "name": "road_cond_id",
+          "description": "Road surface condition at time of accident. FK → road_surface_condition.",
+          "ml:dataType": "sc:Integer",
+          "ml:isEnumeration": true
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/light_condition_id",
+          "name": "light_condition_id",
+          "description": "Lighting conditions at time of accident. FK → light_condition.",
+          "ml:dataType": "sc:Integer",
+          "ml:isEnumeration": true
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/weather_condition_id",
+          "name": "weather_condition_id",
+          "description": "Weather conditions at time of accident. FK → weather_condition.",
+          "ml:dataType": "sc:Integer",
+          "ml:isEnumeration": true
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/special_condition_id",
+          "name": "special_condition_id",
+          "description": "Special conditions at site (e.g. road works). FK → special_condition_at_site.",
+          "ml:dataType": "sc:Integer",
+          "ml:isEnumeration": true
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/carriageway_hazard_id",
+          "name": "carriageway_hazard_id",
+          "description": "Carriageway hazard present (e.g. vehicle in road). FK → carriageway_hazard.",
+          "ml:dataType": "sc:Integer",
+          "ml:isEnumeration": true
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/road_type_id",
+          "name": "road_type_id",
+          "description": "Road type (e.g. single carriageway, dual carriageway, roundabout). FK → road_type.",
+          "ml:dataType": "sc:Integer",
+          "ml:isEnumeration": true
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/speed_limit_mph",
+          "name": "speed_limit_mph",
+          "description": "Posted speed limit on the road at the accident location, in miles per hour.",
+          "ml:dataType": "sc:Integer",
+          "sc:unitCode": "http://qudt.org/vocab/unit/MI-PER-HR"
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/junction_detail_id",
+          "name": "junction_detail_id",
+          "description": "Junction detail (e.g. not at junction, roundabout, T-junction). FK → junction_detail.",
+          "ml:dataType": "sc:Integer",
+          "ml:isEnumeration": true
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/junction_control_id",
+          "name": "junction_control_id",
+          "description": "Junction control type (e.g. give way, traffic signals). FK → junction_control.",
+          "ml:dataType": "sc:Integer",
+          "ml:isEnumeration": true
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/crossing_control_id",
+          "name": "crossing_control_id",
+          "description": "Pedestrian crossing control type. FK → pedestrian_crossing_control.",
+          "ml:dataType": "sc:Integer",
+          "ml:isEnumeration": true
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/crossing_facility_id",
+          "name": "crossing_facility_id",
+          "description": "Pedestrian crossing facility type. FK → pedestrian_crossing_facility.",
+          "ml:dataType": "sc:Integer",
+          "ml:isEnumeration": true
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/casualties",
+          "name": "casualties",
+          "description": "Total number of casualties in the accident (count).",
+          "ml:dataType": "sc:Integer",
+          "sc:unitCode": "http://qudt.org/vocab/unit/UNITLESS"
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/vehicles",
+          "name": "vehicles",
+          "description": "Total number of vehicles involved in the accident (count).",
+          "ml:dataType": "sc:Integer",
+          "sc:unitCode": "http://qudt.org/vocab/unit/UNITLESS"
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/rural_urban",
+          "name": "rural_urban",
+          "description": "Rural or urban classification of the output area. Values: 'Rural', 'Urban'.",
+          "ml:dataType": "sc:Text",
+          "ml:isEnumeration": true
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/area_hectares",
+          "name": "area_hectares",
+          "description": "Area of the output area in hectares.",
+          "ml:dataType": "sc:Float",
+          "sc:unitCode": "http://qudt.org/vocab/unit/HA"
+        },
+        {
+          "@type": "ml:Field",
+          "@id": "ml-accident-features/lad_name",
+          "name": "lad_name",
+          "description": "Name of the local authority district (LAD) in which the accident occurred.",
+          "ml:dataType": "sc:Text"
+        }
+      ]
+    }
+  ]
+}
