@@ -1,0 +1,89 @@
+{
+  "experiment_id": "severity_rf_baseline_v1",
+  "dataset_name": "road_safety_north_yorkshire",
+  "data_source": "DBRepo REST API",
+  "database_id": "f36ef3e2-1aee-4526-b3ea-82f661a9261a",
+  "view_name": "ml_accident_features",
+  "view_id": "45b21a9f-1b85-4035-8f1f-4fb699b70f5e",
+  "target_column": "severity_id",
+  "target_labels": {
+    "1": "fatal",
+    "2": "serious",
+    "3": "slight"
+  },
+  "n_rows_total": 8358,
+  "n_train": 6686,
+  "n_test": 1672,
+  "model_type": "random_forest_classifier",
+  "hyperparameters": {
+    "n_estimators": 100,
+    "max_depth": null,
+    "min_samples_split": 2,
+    "min_samples_leaf": 1,
+    "class_weight": "balanced",
+    "random_state": 42
+  },
+  "accuracy": 0.7511961722488039,
+  "precision_macro": 0.3809625632148797,
+  "recall_macro": 0.3453354955483386,
+  "f1_macro": 0.321623731459797,
+  "precision_weighted": 0.6628692531724569,
+  "recall_weighted": 0.7511961722488039,
+  "f1_weighted": 0.6731032125768968,
+  "classification_report": {
+    "1": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 39.0
+    },
+    "2": {
+      "precision": 0.3770491803278688,
+      "recall": 0.06284153005464481,
+      "f1-score": 0.10772833723653395,
+      "support": 366.0
+    },
+    "3": {
+      "precision": 0.7658385093167702,
+      "recall": 0.9731649565903709,
+      "f1-score": 0.8571428571428571,
+      "support": 1267.0
+    },
+    "accuracy": 0.7511961722488039,
+    "macro avg": {
+      "precision": 0.3809625632148797,
+      "recall": 0.3453354955483386,
+      "f1-score": 0.321623731459797,
+      "support": 1672.0
+    },
+    "weighted avg": {
+      "precision": 0.6628692531724569,
+      "recall": 0.7511961722488039,
+      "f1-score": 0.6731032125768968,
+      "support": 1672.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      0,
+      5,
+      34
+    ],
+    [
+      0,
+      23,
+      343
+    ],
+    [
+      1,
+      33,
+      1233
+    ]
+  ],
+  "confusion_matrix_labels": [
+    1,
+    2,
+    3
+  ],
+  "roc_auc_ovr_weighted": 0.6053938399734371
+}

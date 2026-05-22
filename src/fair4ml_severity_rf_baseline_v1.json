@@ -1,0 +1,110 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/", "fair4ml": "https://w3id.org/fair4ml/", "ml": "http://www.w3.org/ns/ml-schema#", "dct": "http://purl.org/dc/terms/"},
+  "@type": "fair4ml:MLModel", "name": "Accident Severity Random Forest Classifier","version": "1.0.0", "identifier": "severity_rf_baseline_v1",
+  "description": "This is a Random Forest classifier trained to predict road accident severity for the North Yorkshire STATS19 dataset (2009-2013). The model takes 20 input features (12 categorical, 8 numeric) describing road conditions, weather, lighting, junction details, speed limits, and geographic coordinates, and predicts one of three severity classes: fatal (1), serious (2), or slight (3). We used class_weight='balanced' to handle the strong class imbalance in the dataset, since fatal accidents make up only about 2.4% of all records. The model is part of the DaSt-2026 course project at TU Wien and is intended for research and educational purposes only.",
+  "dateCreated": "2026-05-23",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+
+  "creator": [
+    { "@type": "Person", "name": "Sravanthi Muthineni", "@id": "https://orcid.org/0009-0009-8778-4701", 
+        "affiliation": {   "@type": "Organization",   "name": "TU Wien" }
+    } ],
+
+  "fair4ml:mlTask": "MulticlassClassification",
+
+  "fair4ml:mlAlgorithm": {"name": "Random Forest","library": "scikit-learn","libraryVersion": "1.8.0","className": "sklearn.ensemble.RandomForestClassifier",
+    "url": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html"
+  },
+
+  "fair4ml:hyperparameters": { "n_estimators": 100, "max_depth": null, "min_samples_split": 2, "min_samples_leaf": 1, "class_weight": "balanced", "random_state": 42, "n_jobs": -1,
+    "note": "max_depth=null means trees are grown until all leaves are pure or contain fewer than min_samples_split samples. class_weight='balanced' was chosen because the dataset is heavily imbalanced toward slight accidents."
+  },
+
+  "fair4ml:preprocessing": {
+    "categorical_columns": [ "day_of_week", "road_cond_id", "light_condition_id", "weather_condition_id", "special_condition_id", "carriageway_hazard_id", "road_type_id","junction_detail_id", "junction_control_id", "crossing_control_id", "crossing_facility_id", "rural_urban" ],
+    "categorical_imputer": "most_frequent",
+    "categorical_encoder": "OneHotEncoder with handle_unknown='ignore'",
+    "numeric_columns": [  "easting",  "northing",  "longitude",  "latitude",  "speed_limit_mph",  "casualties",  "vehicles",  "area_hectares"],
+    "numeric_imputer": "median",
+    "dropped_columns": [ "police_ref","accident_date", "accident_time", "lad_name" ],
+    "dropped_columns_reason": "These columns are identifiers or descriptive fields that would leak information or have no predictive value for severity."
+  },
+
+  "fair4ml:trainedOn": { "@type": "Dataset", "name": "Road Safety Data - North Yorkshire Highways Authority (2009-2013)",
+    "description": "Road traffic accident records collected by North Yorkshire Police under the UK STATS19 reporting system, originally published by the UK Department for Transport. The dataset was re-published by our project team in a 19-table 3NF relational schema on the TU Wien DBRepo test instance. We loaded all data exclusively via the DBRepo REST API using the ml_accident_features view.",
+    "identifier": "f36ef3e2-1aee-4526-b3ea-82f661a9261a",
+    "url": "https://test.dbrepo.tuwien.ac.at/database/f36ef3e2-1aee-4526-b3ea-82f661a9261a",
+    "note_on_doi": "No DataCite DOI is available because DOI registration via POST /api/v1/identifier returned HTTP 500 on the test instance on 2026-05-07. The DBRepo persistent URL above is used as the official dataset reference. This is documented in src/t2_1_dbrepo_schema.ipynb Section 8 and in the README.",
+    "sameAs": "https://data.europa.eu/data/datasets/road-safety-data?locale=en",
+    "originalPublisher": "UK Department for Transport",
+    "license": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "temporalCoverage": "2009-01-01/2013-12-31",
+    "spatialCoverage": "North Yorkshire Police force area, England, UK",
+    "viewUsed": {
+      "view_name": "ml_accident_features",
+      "view_id": "45b21a9f-1b85-4035-8f1f-4fb699b70f5e",
+      "endpoint": "https://test.dbrepo.tuwien.ac.at/api/v1/database/f36ef3e2-1aee-4526-b3ea-82f661a9261a/view/45b21a9f-1b85-4035-8f1f-4fb699b70f5e/data"
+    },
+    "split": { "n_total": 8358, "n_train": 6686, "n_test": 1672, "test_fraction": 0.2, "stratified_by": "severity_id", "random_seed": 42 }
+  },
+
+  "fair4ml:evaluationMetrics": {  "evaluation_set": "Held-out stratified test set, n=1672, 20% of total data, random_seed=42", "accuracy": 0.7511961722488039,
+    "precision_macro": 0.3809625632148797, "recall_macro": 0.3453354955483386, "f1_macro": 0.321623731459797, "precision_weighted": 0.6628692531724569,
+    "recall_weighted": 0.7511961722488039, "f1_weighted": 0.6731032125768968, "roc_auc_ovr_weighted": 0.6053938399734371,
+    "per_class": { "fatal (severity_id=1)": {  "precision": 0.0,  "recall": 0.0,  "f1": 0.0,  "support": 39},
+      "serious (severity_id=2)": {  "precision": 0.3770491803278688,  "recall": 0.06284153005464481,  "f1": 0.10772833723653395,  "support": 366
+      },
+      "slight (severity_id=3)": {
+        "precision": 0.7658385093167702,
+        "recall": 0.9731649565903709,
+        "f1": 0.8571428571428571,
+        "support": 1267
+      }
+    },
+    "confusion_matrix": {
+      "labels": [1, 2, 3],
+      "matrix": [
+        [0,  5,  34],
+        [0,  23, 343],
+        [1,  33, 1233]
+      ],
+      "note": "Rows are true labels, columns are predicted labels. The model predicts almost everything as slight (class 3), which reflects the severe class imbalance even after applying class_weight='balanced'."
+    },
+    "metrics_file": "outputs/metrics/severity_rf_baseline_v1_metrics.json",
+    "confusion_matrix_figure": "outputs/figures/severity_rf_baseline_v1_confusion_matrix.png",
+    "predictions_file": "outputs/predictions/severity_rf_baseline_v1_predictions.csv"
+  },
+
+  "fair4ml:intendedUse": "This model was built for the DaSt-2026 course project at TU Wien to demonstrate a complete FAIR ML pipeline for road accident severity classification. It can be used as a baseline for further experimentation with the North Yorkshire STATS19 dataset. It is strictly for research and educational use.",
+
+  "fair4ml:outOfScopeUses": "This model must not be used for any operational or safety-critical decision making, such as real-time accident response, resource allocation for emergency services, or any legal proceedings. It has not been validated outside of North Yorkshire or outside the 2009-2013 time period.",
+
+  "fair4ml:limitations": [
+    "The model completely fails to predict fatal accidents (class 1): precision=0, recall=0, F1=0 on the test set. With only 39 fatal cases in the test set (2.3% of test data), the model ignores this class entirely despite class_weight='balanced'.",
+    "Serious accidents (class 2) are also poorly predicted: recall of only 6.3% means the model misses 93.7% of serious accidents, classifying them as slight instead.",
+    "The dataset covers only North Yorkshire (2009-2013). The model has not been tested on other regions or time periods and should not be assumed to generalise.",
+    "Several numeric features (easting, northing, longitude, latitude) encode geographic location. This may cause the model to learn area-specific accident patterns rather than causal road safety factors.",
+    "Missing values are imputed (median for numeric, most_frequent for categorical). This may introduce bias in features with high missingness rates."
+  ],
+
+  "fair4ml:ethicalConsiderations": "The training data was collected by law enforcement under statutory reporting obligations (STATS19) and contains no personally identifiable information. However, model outputs should not be used to draw conclusions about individual behaviour, and care should be taken not to use predictions to justify decisions that could disproportionately affect specific geographic communities or demographic groups.",
+
+  "fair4ml:modelArtifact": {
+    "path": "outputs/models/severity_rf_baseline_v1.joblib",
+    "format": "joblib",
+    "framework": "scikit-learn",
+    "frameworkVersion": "1.8.0",
+    "pythonVersion": ">=3.10"
+  },
+
+  "fair4ml:reproducibility": {
+    "random_seed": 42,
+    "data_source": "DBRepo REST API only - no local CSV files used",
+    "reproduction_command": "python src/train_experiment.py --data-config config/data.yaml --model-config config/model.yaml --eval-config config/eval.yaml",
+    "environment": "See requirements.txt in repository root"
+  },
+
+  "isPartOf": { "@type": "SoftwareSourceCode",  "name": "DaSt-2026: Road Safety Analysis", "identifier": "https://doi.org/10.5281/zenodo.20182653"
+  }
+}
