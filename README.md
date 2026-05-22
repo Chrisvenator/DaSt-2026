@@ -282,6 +282,11 @@ Authentication uses HTTP Basic Auth via the environment variables `DBREPO_USERNA
 
 The final model is a Random Forest classifier with class balancing enabled. The model artefact, predictions, metrics, and confusion matrix are written to the `outputs/` directory.
 
+
+## RO-Crate (T3.1)
+
+The full experiment package — input data, code, trained model, outputs, authors, and licences — is described in [`ro-crate-metadata.json`](./ro-crate-metadata.json) following the RO-Crate 1.1 specification. Validation output is in `docs/validation/`.
+
 ## Update policy
 
 Update this section whenever:

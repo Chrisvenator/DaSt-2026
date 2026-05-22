@@ -6,6 +6,13 @@
   "dateCreated": "2026-05-23",
   "license": "https://creativecommons.org/licenses/by/4.0/",
 
+  "subjectOf": {
+    "@type": "CreativeWork",
+    "@id": "https://github.com/Chrisvenator/DaSt-2026/blob/main/docs/model-card.md",
+    "name": "Model Card for severity_rf_baseline_v1",
+    "encodingFormat": "text/markdown"
+  },	
+
   "creator": [
     { "@type": "Person", "name": "Sravanthi Muthineni", "@id": "https://orcid.org/0009-0009-8778-4701", 
         "affiliation": {   "@type": "Organization",   "name": "TU Wien" }
