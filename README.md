@@ -5,14 +5,163 @@
 Data Science project 2026.
 
 
-TODO - topic
-TODO - use case
+## Abstract
+
+This project applies supervised machine learning to predict the severity of road traffic accidents (fatal, serious, or slight) using the UK STATS19 accident records for the North Yorkshire Police force area (2009–2013). The dataset contains 8,358 accidents described by road conditions, weather, lighting, junction details, speed limits, and geographic coordinates. The full pipeline from raw data ingestion to model training and evaluation is implemented according to FAIR data principles: the dataset is stored in a normalised relational schema (3NF, 19 tables) in the TU Wien DBRepo test instance, all data access is performed exclusively via the DBRepo REST API, and all artefacts (code, data, models, outputs) are described with structured metadata (RO-Crate, CodeMeta, FAIR4ML, Croissant, Model Card).
 
 ---
 
 # File organisation
 
 All paths are relative to the repository root. Every file follows `snake_case` with no spaces. Version suffixes use `_vN` (integer N). Dates use `YYYYMMDD`.
+
+---
+
+## Requirements and Installation
+
+### Prerequisites
+
+- Python ≥ 3.10
+- pip or conda
+
+### Install dependencies
+
+​```bash
+# Clone the repository
+git clone https://github.com/Chrisvenator/DaSt-2026.git
+cd DaSt-2026
+
+# Create and activate a virtual environment (recommended)
+python -m venv .venv
+source .venv/bin/activate        # Linux/macOS
+.venv\Scripts\activate           # Windows
+
+# Install dependencies
+pip install -r requirements.txt
+​```
+
+### DBRepo credentials
+
+Data is loaded exclusively from the TU Wien DBRepo REST API. Provide credentials via environment variables — do **not** commit them:
+
+​```bash
+export DBREPO_USERNAME=your_username
+export DBREPO_PASSWORD=your_password
+​```
+
+Alternatively place them in a `.env` file (listed in `.gitignore`):
+
+​```
+DBREPO_USERNAME=your_username
+DBREPO_PASSWORD=your_password
+​```
+
+---
+
+## Step-by-Step Reproduction Instructions
+
+### 1 – Set up the environment
+
+Follow the installation steps above.
+
+### 2 – (One-time) Initialise the DBRepo database and schema
+
+This step was completed by the project team and the database is already live. To inspect or recreate it:
+
+​```bash
+jupyter notebook src/t2_1_dbrepo_schema.ipynb
+​```
+
+This notebook creates the 3NF schema in DBRepo via the REST API and adds citable metadata (publisher: UK Department for Transport; licence: OGL v3.0). The ER diagram is at `docs/ER_diagram.png` and the SQL DDL at `docs/schema.sql`.
+
+### 3 – (One-time) Create DBRepo views
+
+​```bash
+jupyter notebook src/t2_4_views.ipynb
+​```
+
+Creates the five ML-ready SQL views documented in the DBRepo Views section.
+
+### 4 – Run the ML experiment
+
+​```bash
+python src/train_experiment.py \
+  --data-config config/data.yaml \
+  --model-config config/model.yaml \
+  --eval-config config/eval.yaml
+​```
+
+This will:
+- Fetch all 8,358 rows from the DBRepo `ml_accident_features` view via the REST API
+- Train a `RandomForestClassifier` on an 80/20 stratified split (seed 42)
+- Write all outputs to `outputs/`
+
+### 5 – Inspect outputs
+
+| Output | Path |
+|--------|------|
+| Trained model | `outputs/models/severity_rf_baseline_v1.joblib` |
+| Evaluation metrics | `outputs/metrics/severity_rf_baseline_v1_metrics.json` |
+| Test-set predictions | `outputs/predictions/severity_rf_baseline_v1_predictions.csv` |
+| Confusion matrix | `outputs/figures/severity_rf_baseline_v1_confusion_matrix.png` |
+
+---
+
+## Description of All Inputs and Outputs
+
+### Inputs
+
+| Item | Description | Location |
+|------|-------------|----------|
+| Raw accident data | UK STATS19 road accident records, North Yorkshire, 2009–2013. 8,358 records. Publisher: UK Department for Transport. Licence: OGL v3.0. | `data/raw/` (archive); live via DBRepo REST API |
+| Attribute code reference | Lookup codes for road conditions, weather, lighting, junction types | `data/raw/2-attributecodesforroadsafety...` |
+| DBRepo view | `ml_accident_features` — 25-column de-normalised feature table | DBRepo view UUID `45b21a9f-1b85-4035-8f1f-4fb699b70f5e` |
+| Data config | Dataset paths, feature lists, split parameters | `config/data.yaml` |
+| Model config | Algorithm type, hyperparameters | `config/model.yaml` |
+| Eval config | Metrics list, output file paths | `config/eval.yaml` |
+
+**Feature columns used for training:**
+
+| Type | Columns |
+|------|---------|
+| Categorical (12) | `day_of_week`, `road_cond_id`, `light_condition_id`, `weather_condition_id`, `special_condition_id`, `carriageway_hazard_id`, `road_type_id`, `junction_detail_id`, `junction_control_id`, `crossing_control_id`, `crossing_facility_id`, `rural_urban` |
+| Numeric (8) | `easting`, `northing`, `longitude`, `latitude`, `speed_limit_mph`, `casualties`, `vehicles`, `area_hectares` |
+| Target | `severity_id` (1 = fatal, 2 = serious, 3 = slight) |
+| Dropped | `police_ref`, `accident_date`, `accident_time`, `lad_name` |
+
+### Outputs
+
+| Item | Description | Location |
+|------|-------------|----------|
+| Trained model | Serialised `sklearn.Pipeline` (preprocessor + `RandomForestClassifier`) | `outputs/models/severity_rf_baseline_v1.joblib` |
+| Metrics JSON | Accuracy, precision, recall, F1 (macro & weighted), ROC-AUC, per-class report, confusion matrix | `outputs/metrics/severity_rf_baseline_v1_metrics.json` |
+| Predictions CSV | Test-set true vs predicted severity IDs with per-class probabilities | `outputs/predictions/severity_rf_baseline_v1_predictions.csv` |
+| Confusion matrix | PNG figure (300 dpi) | `outputs/figures/severity_rf_baseline_v1_confusion_matrix.png` |
+
+---
+
+## Metadata Files
+
+| File | Standard | Description |
+|------|----------|-------------|
+| `ro-crate-metadata.json` | RO-Crate 1.1 | Entire experiment package with all entity relationships and provenance |
+| `codemeta.json` | CodeMeta 2.0 | Software metadata: authors, dependencies, runtime, licence |
+| `docs/fair4ml_severity_rf_baseline_v1.json` | FAIR4ML | ML model metadata: algorithm, hyperparameters, training data, evaluation metrics |
+| `docs/20260521_croissant.json` | Croissant (JSON-LD) | Input dataset field definitions with data types and QUDT/SI unit URIs |
+| `docs/model-card.md` | Model Card | Human-readable model documentation: intended use, evaluation, limitations, ethics |
+| `CITATION.cff` | CFF 1.2 | Citation metadata referencing Zenodo DOI `10.5281/zenodo.20182653` |
+
+---
+
+## Contributors
+
+| Name | Role | ORCID |
+|------|------|-------|
+| Christopher Scherling | T2.1 DBRepo schema, T3.1 RO-Crate, T3.5 Model Card, T3.9 Model deposit | [0009-0007-4090-3107](https://orcid.org/0009-0007-4090-3107) |
+| Muhamad Moghrabi | T2.2 Semantic mapping, T2.7 Release, T3.2 CodeMeta, T3.6 Licences, T3.10 Generated data deposit | [0009-0006-3778-025X](https://orcid.org/0009-0006-3778-025X) |
+| Sravanthi Muthineni | T2.3 Unit mapping, T2.5 DBRepo load, T3.3 FAIR4ML, T3.7 README, T3.11 Standards overlap | [0009-0009-8778-4701](https://orcid.org/0009-0009-8778-4701) |
+| Mehedy Hasan | T2.4 View definitions, T2.6 API reimplementation, T3.4 Croissant, T3.8 Zenodo DOI | [0009-0002-4800-8178](https://orcid.org/0009-0002-4800-8178) |
+
 
 ## Directory layout
 
