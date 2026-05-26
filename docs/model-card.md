@@ -102,9 +102,9 @@ Finally, the model reflects North Yorkshire reporting practice between 2009 and 
 
 ## Licence
 
-The model artefact (`severity_rf_baseline_v1.joblib`) and its derived outputs are released under the output-data licence selected by Owner B for T3.6 — *provisional: CC BY 4.0 (to be confirmed)*. The training data inherits the **UK Open Government Licence v3.0** from the source dataset; this licence permits redistribution and derivative works with attribution, and is therefore compatible with releasing a derived model and predictions under CC BY 4.0.  The training code in this repository is released under the GNU General Public License v3.0 (LICENSE file at the repository root). GPL v3 is copyleft — modifications and downstream conveyed versions of the code must remain under GPL v3 — but trained model artefacts produced by running GPL-licensed code are not themselves covered works under GPL §2, so the model and predictions can be released under a separate output-data licence without conflict.
+The model artefact (`severity_rf_baseline_v1.joblib`) and its derived outputs are released under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** licence — https://creativecommons.org/licenses/by/4.0/. The training data inherits the **UK Open Government Licence v3.0** from the source dataset; OGL v3.0 requires attribution but imposes no ShareAlike or copyleft conditions, so derived works (this model and its outputs) can be released under CC BY 4.0 without conflict. The training code in this repository is released under the **MIT License** (`LICENSE` file at the repository root); MIT is permissive and compatible with both OGL v3.0 (input data) and CC BY 4.0 (output data) — no licence imposes obligations on the others.
 
-Owner B (T3.6) is responsible for confirming the output-data licence and documenting the compatibility argument in the repository README.
+See `README.md → Licences` for the full compatibility argument and per-file mapping.
 
 ## References
 

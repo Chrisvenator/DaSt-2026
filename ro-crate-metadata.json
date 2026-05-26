@@ -4,47 +4,108 @@
     {
       "@type": "CreativeWork",
       "@id": "ro-crate-metadata.json",
-      "conformsTo": { "@id": "https://w3id.org/ro/crate/1.1" },
-      "about": { "@id": "./" },
+      "conformsTo": {
+        "@id": "https://w3id.org/ro/crate/1.1"
+      },
+      "about": {
+        "@id": "./"
+      },
       "description": "RO-Crate 1.1 metadata descriptor for the DaSt-2026 Road Safety Analysis project (T3.1)."
     },
-
     {
       "@id": "./",
       "@type": "Dataset",
-      "name": "DaSt-2026: Road Safety Analysis — Accident-Severity Classification (North Yorkshire, 2009–2013)",
-      "description": "FAIR-compliant ML experiment for the DaSt 2026 course at TU Wien. Predicts road-accident severity (fatal / serious / slight) from UK STATS19 records for North Yorkshire (2009–2013). Data is re-published in 3NF on the TU Wien DBRepo test instance and loaded into the experiment exclusively via the DBRepo REST API. The trained model and its FAIR4ML metadata are deposited on the TU Wien Research Data Repository (test instance); the source code and full metadata package are released on GitHub and Zenodo.",
+      "name": "DaSt-2026: Road Safety Analysis \u2014 Accident-Severity Classification (North Yorkshire, 2009\u20132013)",
+      "description": "FAIR-compliant ML experiment for the DaSt 2026 course at TU Wien. Predicts road-accident severity (fatal / serious / slight) from UK STATS19 records for North Yorkshire (2009\u20132013). Data is re-published in 3NF on the TU Wien DBRepo test instance and loaded into the experiment exclusively via the DBRepo REST API. The trained model and its FAIR4ML metadata are deposited on the TU Wien Research Data Repository (test instance); the source code and full metadata package are released on GitHub and Zenodo.",
       "datePublished": "2026-05-22",
-      "publisher": { "@id": "https://ror.org/04d836q62" },
+      "publisher": {
+        "@id": "https://ror.org/04d836q62"
+      },
       "author": [
-        { "@id": "https://orcid.org/0009-0006-3778-025X" },
-        { "@id": "https://orcid.org/0009-0002-4800-8178" },
-        { "@id": "https://orcid.org/0009-0009-8778-4701" },
-        { "@id": "https://orcid.org/0009-0007-4090-3107" }
+        {
+          "@id": "https://orcid.org/0009-0006-3778-025X"
+        },
+        {
+          "@id": "https://orcid.org/0009-0002-4800-8178"
+        },
+        {
+          "@id": "https://orcid.org/0009-0009-8778-4701"
+        },
+        {
+          "@id": "https://orcid.org/0009-0007-4090-3107"
+        }
       ],
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
-      "mainEntity": { "@id": "outputs/models/severity_rf_baseline_v1.joblib" },
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "mainEntity": {
+        "@id": "outputs/models/severity_rf_baseline_v1.joblib"
+      },
       "hasPart": [
-        { "@id": "outputs/models/severity_rf_baseline_v1.joblib" },
-        { "@id": "docs/model-card.md" },
-        { "@id": "docs/fair4ml_severity_rf_baseline_v1.json" },
-        { "@id": "codemeta.json" },
-        { "@id": "docs/20260521_croissant.json" },
-        { "@id": "src/train_experiment.py" },
-        { "@id": "src/dbrepo_loader.py" },
-        { "@id": "outputs/predictions/severity_rf_baseline_v1_predictions.csv" },
-        { "@id": "outputs/figures/severity_rf_baseline_v1_confusion_matrix.png" },
-        { "@id": "outputs/metrics/severity_rf_baseline_v1_metrics.json" }
+        {
+          "@id": "outputs/models/severity_rf_baseline_v1.joblib"
+        },
+        {
+          "@id": "docs/model-card.md"
+        },
+        {
+          "@id": "docs/fair4ml_severity_rf_baseline_v1.json"
+        },
+        {
+          "@id": "codemeta.json"
+        },
+        {
+          "@id": "docs/20260521_croissant.json"
+        },
+        {
+          "@id": "src/train_experiment.py"
+        },
+        {
+          "@id": "src/dbrepo_loader.py"
+        },
+        {
+          "@id": "outputs/predictions/severity_rf_baseline_v1_predictions.csv"
+        },
+        {
+          "@id": "outputs/figures/severity_rf_baseline_v1_confusion_matrix.png"
+        },
+        {
+          "@id": "outputs/metrics/severity_rf_baseline_v1_metrics.json"
+        },
+	{ 
+	  "@id": "https://test.dbrepo.tuwien.ac.at/database/f36ef3e2-1aee-4526-b3ea-82f661a9261a" 
+	},
+	{ 
+	  "@id": "https://handle.test.datacite.org/10.70124/3ykwc-3sg80" 
+	},
+	{ 
+	  "@id": "https://handle.test.datacite.org/10.70124/5zb61-c7k62" 
+	},
+	{ 
+	  "@id": "https://data.europa.eu/data/datasets/road-safety-data" 
+	},
+	{ 
+	  "@id": "https://data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-safety-data" 
+	}
       ],
       "mentions": [
-        { "@id": "https://test.dbrepo.tuwien.ac.at/database/f36ef3e2-1aee-4526-b3ea-82f661a9261a" },
-        { "@id": "https://handle.test.datacite.org/10.70124/3ykwc-3sg80" },
-        { "@id": "#tuwrd-output-deposit" },
-        { "@id": "https://doi.org/10.5281/zenodo.20182653" },
-        { "@id": "https://github.com/Chrisvenator/DaSt-2026" }
+        {
+          "@id": "https://test.dbrepo.tuwien.ac.at/database/f36ef3e2-1aee-4526-b3ea-82f661a9261a"
+        },
+        {
+          "@id": "https://handle.test.datacite.org/10.70124/3ykwc-3sg80"
+        },
+        {
+          "@id": "https://handle.test.datacite.org/10.70124/5zb61-c7k62"
+        },
+        {
+          "@id": "https://doi.org/10.5281/zenodo.20182653"
+        },
+        {
+          "@id": "https://github.com/Chrisvenator/DaSt-2026"
+        }
       ]
     },
-
     {
       "@id": "https://orcid.org/0009-0006-3778-025X",
       "@type": "Person",
@@ -52,7 +113,9 @@
       "givenName": "Muhamad",
       "familyName": "Moghrabi",
       "identifier": "https://orcid.org/0009-0006-3778-025X",
-      "affiliation": { "@id": "https://ror.org/04d836q62" }
+      "affiliation": {
+        "@id": "https://ror.org/04d836q62"
+      }
     },
     {
       "@id": "https://orcid.org/0009-0002-4800-8178",
@@ -61,7 +124,9 @@
       "givenName": "Mehedy",
       "familyName": "Hasan",
       "identifier": "https://orcid.org/0009-0002-4800-8178",
-      "affiliation": { "@id": "https://ror.org/04d836q62" }
+      "affiliation": {
+        "@id": "https://ror.org/04d836q62"
+      }
     },
     {
       "@id": "https://orcid.org/0009-0009-8778-4701",
@@ -70,7 +135,9 @@
       "givenName": "Sravanthi",
       "familyName": "Muthineni",
       "identifier": "https://orcid.org/0009-0009-8778-4701",
-      "affiliation": { "@id": "https://ror.org/04d836q62" }
+      "affiliation": {
+        "@id": "https://ror.org/04d836q62"
+      }
     },
     {
       "@id": "https://orcid.org/0009-0007-4090-3107",
@@ -79,9 +146,10 @@
       "givenName": "Christopher",
       "familyName": "Scherling",
       "identifier": "https://orcid.org/0009-0007-4090-3107",
-      "affiliation": { "@id": "https://ror.org/04d836q62" }
+      "affiliation": {
+        "@id": "https://ror.org/04d836q62"
+      }
     },
-
     {
       "@id": "https://ror.org/04d836q62",
       "@type": "Organization",
@@ -100,23 +168,34 @@
       "@type": "Organization",
       "name": "North Yorkshire Police"
     },
-
     {
       "@id": "https://test.dbrepo.tuwien.ac.at/database/f36ef3e2-1aee-4526-b3ea-82f661a9261a",
       "@type": "Dataset",
-      "name": "Road Safety Data — North Yorkshire Highways Authority (2009–2013), re-published in 3NF on TU Wien DBRepo",
-      "description": "Re-publication in Third Normal Form (19 tables) of the UK STATS19 road-safety records for the North Yorkshire Police force area, 2009–2013. Re-published by Group A (DaSt 2026, TU Wien) under the original UK Open Government Licence v3.0. No DataCite DOI was minted — POST /api/v1/identifier returned HTTP 500 on the DBRepo test instance on 2026-05-07; the DBRepo database UUID and URL are used as the stable identifier in lieu of a DOI. See README.md, section *Status of citable identifier*, for the recorded attempt.",
+      "name": "Road Safety Data \u2014 North Yorkshire Highways Authority (2009\u20132013), re-published in 3NF on TU Wien DBRepo",
+      "description": "Re-publication in Third Normal Form (19 tables) of the UK STATS19 road-safety records for the North Yorkshire Police force area, 2009\u20132013. Re-published by Group A (DaSt 2026, TU Wien) under the original UK Open Government Licence v3.0. No DataCite DOI was minted \u2014 POST /api/v1/identifier returned HTTP 500 on the DBRepo test instance on 2026-05-07; the DBRepo database UUID and URL are used as the stable identifier in lieu of a DOI. See README.md, section *Status of citable identifier*, for the recorded attempt.",
       "creator": [
-        { "@id": "#uk-dft" },
-        { "@id": "#north-yorkshire-police" }
+        {
+          "@id": "#uk-dft"
+        },
+        {
+          "@id": "#north-yorkshire-police"
+        }
       ],
-      "publisher": { "@id": "#uk-dft" },
-      "license": { "@id": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" },
+      "publisher": {
+        "@id": "#uk-dft"
+      },
+      "license": {
+        "@id": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+      },
       "identifier": "f36ef3e2-1aee-4526-b3ea-82f661a9261a",
       "url": "https://test.dbrepo.tuwien.ac.at/database/f36ef3e2-1aee-4526-b3ea-82f661a9261a",
       "isBasedOn": [
-        { "@id": "https://data.europa.eu/data/datasets/road-safety-data" },
-        { "@id": "https://data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-safety-data" }
+        {
+          "@id": "https://data.europa.eu/data/datasets/road-safety-data"
+        },
+        {
+          "@id": "https://data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-safety-data"
+        }
       ],
       "variableMeasured": "severity_id",
       "size": "8358 accidents",
@@ -133,9 +212,10 @@
       "@id": "https://data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-safety-data",
       "@type": "Dataset",
       "name": "Road Safety Data (data.gov.uk upstream)",
-      "publisher": { "@id": "#uk-dft" }
+      "publisher": {
+        "@id": "#uk-dft"
+      }
     },
-
     {
       "@id": "outputs/models/severity_rf_baseline_v1.joblib",
       "@type": "File",
@@ -144,52 +224,84 @@
       "description": "Trained scikit-learn Pipeline (SimpleImputer + OneHotEncoder + RandomForestClassifier with class_weight='balanced') serialised with joblib. Multiclass accident-severity classifier.",
       "encodingFormat": "application/octet-stream",
       "contentSize": "34.26 MiB",
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
       "identifier": "https://handle.test.datacite.org/10.70124/3ykwc-3sg80",
       "author": [
-        { "@id": "https://orcid.org/0009-0006-3778-025X" },
-        { "@id": "https://orcid.org/0009-0002-4800-8178" },
-        { "@id": "https://orcid.org/0009-0009-8778-4701" },
-        { "@id": "https://orcid.org/0009-0007-4090-3107" }
+        {
+          "@id": "https://orcid.org/0009-0006-3778-025X"
+        },
+        {
+          "@id": "https://orcid.org/0009-0002-4800-8178"
+        },
+        {
+          "@id": "https://orcid.org/0009-0009-8778-4701"
+        },
+        {
+          "@id": "https://orcid.org/0009-0007-4090-3107"
+        }
       ],
       "isBasedOn": [
-        { "@id": "https://test.dbrepo.tuwien.ac.at/database/f36ef3e2-1aee-4526-b3ea-82f661a9261a" },
-        { "@id": "src/train_experiment.py" }
+        {
+          "@id": "https://test.dbrepo.tuwien.ac.at/database/f36ef3e2-1aee-4526-b3ea-82f661a9261a"
+        },
+        {
+          "@id": "src/train_experiment.py"
+        }
       ],
       "subjectOf": [
-        { "@id": "docs/model-card.md" },
-        { "@id": "docs/fair4ml_severity_rf_baseline_v1.json" }
+        {
+          "@id": "docs/model-card.md"
+        },
+        {
+          "@id": "docs/fair4ml_severity_rf_baseline_v1.json"
+        }
       ]
     },
     {
       "@id": "https://handle.test.datacite.org/10.70124/3ykwc-3sg80",
       "@type": "Dataset",
       "additionalType": "DataPublication",
-      "name": "TUWRD model deposit — severity_rf_baseline_v1 (T3.9)",
+      "name": "TUWRD model deposit \u2014 severity_rf_baseline_v1 (T3.9)",
       "description": "TU Wien Research Data Repository deposit (test instance) for the trained model artefact and its FAIR4ML metadata.",
-      "publisher": { "@id": "https://ror.org/04d836q62" },
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
+      "publisher": {
+        "@id": "https://ror.org/04d836q62"
+      },
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
       "identifier": "10.70124/3ykwc-3sg80"
     },
     {
-      "@id": "#tuwrd-output-deposit",
+      "@id": "https://handle.test.datacite.org/10.70124/5zb61-c7k62",
       "@type": "Dataset",
       "additionalType": "DataPublication",
-      "name": "TUWRD generated-data deposit — severity_rf_baseline_v1 outputs (T3.10)",
-      "description": "TU Wien Research Data Repository deposit (test instance) for the generated outputs of the experiment: test-set predictions, confusion-matrix figure, and evaluation metrics. Owner: B (T3.10). DOI to be added once B reserves it.",
-      "publisher": { "@id": "https://ror.org/04d836q62" },
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
+      "name": "TUWRD generated-data deposit \u2014 severity_rf_baseline_v1 outputs (T3.10)",
+      "description": "TU Wien Research Data Repository deposit (test instance) for the generated outputs of the experiment: test-set predictions, confusion-matrix figure, and evaluation metrics. Owner: B (T3.10).",
+      "publisher": {
+        "@id": "https://ror.org/04d836q62"
+      },
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "identifier": "10.70124/5zb61-c7k62"
     },
-
     {
       "@id": "docs/model-card.md",
       "@type": "CreativeWork",
       "name": "Model Card for severity_rf_baseline_v1",
       "description": "Human-readable model documentation covering description, intended use, out-of-scope uses, training data, evaluation results, limitations, ethical considerations, and licence (T3.5).",
       "encodingFormat": "text/markdown",
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
-      "about": { "@id": "outputs/models/severity_rf_baseline_v1.joblib" },
-      "author": { "@id": "https://orcid.org/0009-0006-3778-025X" }
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "about": {
+        "@id": "outputs/models/severity_rf_baseline_v1.joblib"
+      },
+      "author": {
+        "@id": "https://orcid.org/0009-0006-3778-025X"
+      }
     },
     {
       "@id": "docs/fair4ml_severity_rf_baseline_v1.json",
@@ -198,9 +310,15 @@
       "name": "FAIR4ML metadata for severity_rf_baseline_v1",
       "description": "FAIR4ML-compliant JSON-LD metadata for the trained model (T3.3): training-dataset reference, algorithm and version, hyperparameters, evaluation metrics, intended use, limitations.",
       "encodingFormat": "application/ld+json",
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
-      "about": { "@id": "outputs/models/severity_rf_baseline_v1.joblib" },
-      "author": { "@id": "https://orcid.org/0009-0009-8778-4701" }
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "about": {
+        "@id": "outputs/models/severity_rf_baseline_v1.joblib"
+      },
+      "author": {
+        "@id": "https://orcid.org/0009-0009-8778-4701"
+      }
     },
     {
       "@id": "codemeta.json",
@@ -209,22 +327,33 @@
       "name": "CodeMeta 2.0 metadata for the experiment software",
       "description": "CodeMeta 2.0 software-metadata descriptor for the experiment code (T3.2): name, version, authors with ORCIDs, SPDX licence, programming language, runtime requirements, dependencies (with version pins), GitHub URL.",
       "encodingFormat": "application/ld+json",
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
-      "about": { "@id": "https://github.com/Chrisvenator/DaSt-2026" },
-      "author": { "@id": "https://orcid.org/0009-0002-4800-8178" }
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "about": {
+        "@id": "https://github.com/Chrisvenator/DaSt-2026"
+      },
+      "author": {
+        "@id": "https://orcid.org/0009-0002-4800-8178"
+      }
     },
     {
       "@id": "docs/20260521_croissant.json",
       "@type": "File",
       "additionalType": "CreativeWork",
-      "name": "Croissant metadata for Road Safety Data – North Yorkshire (STATS19, 2009–2013)",
+      "name": "Croissant metadata for Road Safety Data \u2013 North Yorkshire (STATS19, 2009\u20132013)",
       "description": "Croissant JSON-LD descriptor for the training dataset (T3.4). Describes the ml_accident_features RecordSet with 25 typed fields, units mapped to QUDT and SI Digital Framework URIs (length in metres, angle in degrees, speed in mi/h, area in hectares), five DBRepo REST API distributions (one per view), and the inherited UK Open Government Licence v3.0.",
       "encodingFormat": "application/ld+json",
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
-      "about": { "@id": "https://test.dbrepo.tuwien.ac.at/database/f36ef3e2-1aee-4526-b3ea-82f661a9261a" },
-      "author": { "@id": "https://orcid.org/0009-0007-4090-3107" }
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "about": {
+        "@id": "https://test.dbrepo.tuwien.ac.at/database/f36ef3e2-1aee-4526-b3ea-82f661a9261a"
+      },
+      "author": {
+        "@id": "https://orcid.org/0009-0007-4090-3107"
+      }
     },
-
     {
       "@id": "src/train_experiment.py",
       "@type": "SoftwareSourceCode",
@@ -232,7 +361,9 @@
       "description": "Main training and evaluation script: loads data from the DBRepo REST API, fits the scikit-learn Pipeline, writes the trained model, predictions, metrics, and the confusion-matrix figure.",
       "programmingLanguage": "Python",
       "encodingFormat": "text/x-python",
-      "license": { "@id": "https://spdx.org/licenses/GPL-3.0-only.html" }
+      "license": {
+        "@id": "https://spdx.org/licenses/MIT.html"
+      }
     },
     {
       "@id": "src/dbrepo_loader.py",
@@ -241,27 +372,43 @@
       "description": "Reusable DBRepo REST API loader used by train_experiment.py to fetch the ml_accident_features view (T2.6).",
       "programmingLanguage": "Python",
       "encodingFormat": "text/x-python",
-      "license": { "@id": "https://spdx.org/licenses/GPL-3.0-only.html" }
+      "license": {
+        "@id": "https://spdx.org/licenses/MIT.html"
+      }
     },
-
     {
       "@id": "outputs/predictions/severity_rf_baseline_v1_predictions.csv",
       "@type": "File",
       "name": "Test-set predictions for severity_rf_baseline_v1",
       "encodingFormat": "text/csv",
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
       "isBasedOn": [
-        { "@id": "outputs/models/severity_rf_baseline_v1.joblib" },
-        { "@id": "https://test.dbrepo.tuwien.ac.at/database/f36ef3e2-1aee-4526-b3ea-82f661a9261a" }
+        {
+          "@id": "outputs/models/severity_rf_baseline_v1.joblib"
+        },
+        {
+          "@id": "https://test.dbrepo.tuwien.ac.at/database/f36ef3e2-1aee-4526-b3ea-82f661a9261a"
+        }
       ]
     },
     {
       "@id": "outputs/figures/severity_rf_baseline_v1_confusion_matrix.png",
-      "@type": [ "File", "ImageObject" ],
+      "@type": [
+        "File",
+        "ImageObject"
+      ],
       "name": "Confusion-matrix figure for severity_rf_baseline_v1",
       "encodingFormat": "image/png",
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
-      "isBasedOn": [ { "@id": "outputs/models/severity_rf_baseline_v1.joblib" } ]
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "isBasedOn": [
+        {
+          "@id": "outputs/models/severity_rf_baseline_v1.joblib"
+        }
+      ]
     },
     {
       "@id": "outputs/metrics/severity_rf_baseline_v1_metrics.json",
@@ -269,10 +416,15 @@
       "name": "Evaluation metrics for severity_rf_baseline_v1",
       "description": "Aggregated and per-class evaluation metrics (accuracy, precision/recall/F1, ROC-AUC), hyperparameters, and confusion matrix in machine-readable form.",
       "encodingFormat": "application/json",
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
-      "isBasedOn": [ { "@id": "outputs/models/severity_rf_baseline_v1.joblib" } ]
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "isBasedOn": [
+        {
+          "@id": "outputs/models/severity_rf_baseline_v1.joblib"
+        }
+      ]
     },
-
     {
       "@id": "https://creativecommons.org/licenses/by/4.0/",
       "@type": "CreativeWork",
@@ -288,13 +440,12 @@
       "identifier": "OGL-UK-3.0"
     },
     {
-      "@id": "https://spdx.org/licenses/GPL-3.0-only.html",
+      "@id": "https://spdx.org/licenses/MIT.html",
       "@type": "CreativeWork",
-      "name": "GNU General Public License v3.0 only",
-      "alternateName": "GPL-3.0-only",
-      "identifier": "GPL-3.0-only"
+      "name": "MIT License",
+      "alternateName": "MIT",
+      "identifier": "MIT"
     },
-
     {
       "@id": "https://doi.org/10.5281/zenodo.20182653",
       "@type": "SoftwareApplication",
@@ -302,14 +453,18 @@
       "softwareVersion": "1.0",
       "identifier": "10.5281/zenodo.20182653",
       "publisher": "Zenodo",
-      "license": { "@id": "https://spdx.org/licenses/GPL-3.0-only.html" }
+      "license": {
+        "@id": "https://spdx.org/licenses/MIT.html"
+      }
     },
     {
       "@id": "https://github.com/Chrisvenator/DaSt-2026",
       "@type": "SoftwareSourceCode",
       "name": "DaSt-2026 GitHub repository",
       "codeRepository": "https://github.com/Chrisvenator/DaSt-2026",
-      "license": { "@id": "https://spdx.org/licenses/GPL-3.0-only.html" }
+      "license": {
+        "@id": "https://spdx.org/licenses/MIT.html"
+      }
     }
   ]
 }
