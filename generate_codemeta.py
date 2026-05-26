@@ -6,7 +6,7 @@ import json
 from datetime import date
 
 # ── 1. Read ALL pinned dependencies from requirements.txt ─────────────
-with open("requirements.txt") as f:
+with open("requirements.txt", encoding="utf-8") as f:
     dependencies = [
         line.strip()
         for line in f
