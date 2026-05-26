@@ -295,3 +295,38 @@ Update this section whenever:
 - a new experiment or dataset is added that requires a new `{experiment}` or `{dataset}` label.
 
 Keep the examples table current — stale examples are worse than none.
+
+## Licences
+
+### 1. Input Data
+The source dataset (STATS19 Road Traffic Accidents, North Yorkshire, 2009–2013)
+is published by the **UK Department for Transport** under the
+**Open Government Licence v3.0 (OGL v3.0)**.
+Full licence: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+
+Our use — training a machine learning classifier and publishing results — is
+fully permitted under OGL v3.0. The licence requires source acknowledgement
+but does **not** impose ShareAlike conditions, so output data may be released
+under a separate licence (CC BY 4.0) without conflict.
+
+### 2. Software / Code
+All code in this repository is licensed under the **MIT License**.
+See the `LICENSE` file in the repository root.
+
+MIT was chosen because it is permissive and fully compatible with OGL v3.0 —
+neither licence imposes copyleft or ShareAlike obligations that would conflict
+with the other. MIT is also compatible with CC BY 4.0 on the output data side.
+
+### 3. Output Data (Models, Predictions, Figures)
+All generated outputs are released under
+**Creative Commons Attribution 4.0 International (CC BY 4.0)**.
+Full licence: https://creativecommons.org/licenses/by/4.0/
+
+This covers:
+- `outputs/models/severity_rf_baseline_v1.joblib`
+- `outputs/predictions/severity_rf_baseline_v1_predictions.csv`
+- `outputs/metrics/severity_rf_baseline_v1_metrics.json`
+- `outputs/figures/severity_rf_baseline_v1_confusion_matrix.png`
+
+CC BY 4.0 is compatible with OGL v3.0 and requires only attribution when
+reusing derived outputs.
