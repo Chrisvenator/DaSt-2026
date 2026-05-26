@@ -1,4 +1,4 @@
-# DaSt-2026: Road Safety Analysis
+# Road Traffic Accident Severity Classification Using Government Data
 
 [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.20182653.svg)](https://doi.org/10.5281/zenodo.20182653)
 

@@ -46,7 +46,7 @@
     }
   ],
   "softwareRequirements": [
-    "\ufeffannotated-types==0.7.0",
+    "annotated-types==0.7.0",
     "asttokens==3.0.1",
     "certifi==2026.5.20",
     "charset-normalizer==3.4.7",

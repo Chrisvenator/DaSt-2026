@@ -12,3 +12,32 @@ identifiers:
     value: 10.5281/zenodo.20182653
 url: "https://doi.org/10.5281/zenodo.20182653"
 license: GNU General Public License v3.0
+
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "DaSt-2026: STATS19 Road Traffic Accident Severity Prediction – North Yorkshire 2009–2013"
+authors:
+  - family-names: Moghrabi
+    given-names: Muhamad
+    orcid: https://orcid.org/0009-0006-3778-025X
+
+  - family-names: Hasan
+    given-names: Mehedy
+    orcid: https://orcid.org/0009-0002-4800-8178
+
+  - family-names: Muthineni
+    given-names: Sravanthi
+    orcid: https://orcid.org/0009-0009-8778-4701
+
+  - family-names: Scherling
+    given-names: Christopher
+    orcid: https://orcid.org/0009-0007-4090-3107
+    email: christopher.scherling@gmail.com
+version: 0.3.0
+date-released: "2026-05-26"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.20182653
+url: "https://doi.org/10.5281/zenodo.20182653"
+license: MIT
+repository-code: "https://github.com/Chrisvenator/DaSt-2026"
