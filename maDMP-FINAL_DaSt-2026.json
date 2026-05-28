@@ -1,0 +1,346 @@
+{
+  "dmp": {
+    "title": "DaSt-2026: Road Traffic Accident Severity Classification – North Yorkshire 2009–2013",
+    "description": "Final data management plan for the DaSt-2026 FAIR Data Science group experiment. The project reuses UK STATS19 road accident records for North Yorkshire (2009–2013) to train a Random Forest classifier predicting accident severity. Data is stored in a 19-table 3NF relational schema on TU Wien DBRepo and accessed exclusively via REST API. Outputs include a trained model, test-set predictions, evaluation metrics, and a confusion matrix figure. All artefacts are deposited on TU Wien Research Data Repository and Zenodo with persistent DOIs.",
+    "language": "eng",
+    "created": "2026-05-27T00:00:00Z",
+    "modified": "2026-05-27T00:00:00Z",
+    "ethical_issues_exist": "no",
+    "ethical_issues_description": "No particular ethical issue is foreseen with the data to be used or produced by the project. The input dataset contains no personal data. All data is publicly available under open licences.",
+    "dmp_id": {
+      "identifier": "https://doi.org/10.5281/zenodo.20182653",
+      "type": "doi"
+    },
+    "contact": {
+      "name": "Muthineni, Sravanthi",
+      "contact_id": {
+        "identifier": "https://orcid.org/0009-0009-8778-4701",
+        "type": "orcid"
+      }
+    },
+    "contributor": [
+      {
+        "name": "Scherling, Christopher",
+        "role": ["Software"],
+        "contributor_id": {
+          "identifier": "https://orcid.org/0009-0007-4090-3107",
+          "type": "orcid"
+        }
+      },
+      {
+        "name": "Muthineni, Sravanthi",
+        "role": ["DataCurator", "ProjectLeader"],
+        "contributor_id": {
+          "identifier": "https://orcid.org/0009-0009-8778-4701",
+          "type": "orcid"
+        }
+      },
+      {
+        "name": "Moghrabi, Muhamad",
+        "role": ["DataCollector"],
+        "contributor_id": {
+          "identifier": "https://orcid.org/0009-0006-3778-025X",
+          "type": "orcid"
+        }
+      },
+      {
+        "name": "Hasan, Mehedy",
+        "role": ["DataCurator"],
+        "contributor_id": {
+          "identifier": "https://orcid.org/0009-0002-4800-8178",
+          "type": "orcid"
+        }
+      }
+    ],
+    "cost": [],
+    "project": [
+      {
+        "title": "DaSt-2026: Road Traffic Accident Severity Classification – North Yorkshire 2009–2013",
+        "description": "A FAIR-compliant machine learning experiment predicting road traffic accident severity (fatal, serious, slight) using UK STATS19 records for North Yorkshire (2009–2013). The dataset is stored in a 3NF relational schema on TU Wien DBRepo and loaded exclusively via REST API. A Random Forest classifier is trained and evaluated. All artefacts are described with RO-Crate, CodeMeta, FAIR4ML, Croissant, and Model Card metadata.",
+        "start": "2026-04-01",
+        "end": "2026-06-30",
+        "funding": []
+      }
+    ],
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "https://test.dbrepo.tuwien.ac.at/database/f36ef3e2-1aee-4526-b3ea-82f661a9261a",
+          "type": "url"
+        },
+        "title": "Road Safety Data – North Yorkshire STATS19 (2009–2013) – DBRepo Re-publication",
+        "description": "UK STATS19 road traffic accident records for the North Yorkshire Police force area, 2009–2013. Contains 8,358 accident records. Originally published by the UK Department for Transport under OGL v3.0. Re-published in a 19-table 3NF relational schema on TU Wien DBRepo (UUID: f36ef3e2-1aee-4526-b3ea-82f661a9261a). Accessed exclusively via the DBRepo REST API.",
+        "type": "dataset",
+        "issued": "2026-05-26",
+        "language": "eng",
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "security_and_privacy": [],
+        "technical_resource": [],
+        "keyword": ["road traffic accidents","STATS19","North Yorkshire","open government data","relational database","DBRepo"],
+        "data_quality_assurance": [
+          "Schema validation: all 19 tables verified against column definitions; row count matched source CSV (8,358 records).",
+          "API round-trip verification: DBRepo REST API view ml_accident_features validated for identical row counts and value distributions.",
+          "Missing-value assessment: numeric columns imputed with median; categorical with most-frequent value."
+        ],
+        "metadata": [
+          {
+            "description": "Semantic concept URI mappings for all 69 columns using schema.org, GeoSPARQL, and W3C WGS84 ontologies via DBRepo REST API.",
+            "language": "eng",
+            "metadata_standard_id": {"identifier": "https://schema.org", "type": "url"}
+          },
+          {
+            "description": "Unit of measurement mappings using SI Digital Framework (BIPM) and QUDT ontologies.",
+            "language": "eng",
+            "metadata_standard_id": {"identifier": "https://si-digital-framework.org/", "type": "url"}
+          },
+          {
+            "description": "Croissant JSON-LD metadata describing fields, data types, units (QUDT URIs), distribution, and licence.",
+            "language": "eng",
+            "metadata_standard_id": {"identifier": "https://github.com/mlcommons/croissant", "type": "url"}
+          }
+        ],
+        "distribution": [
+          {
+            "title": "TU Wien DBRepo REST API",
+            "description": "Data accessible via DBRepo REST API. DBRepo persistent URL used as stable identifier.",
+            "access_url": "https://test.dbrepo.tuwien.ac.at/database/f36ef3e2-1aee-4526-b3ea-82f661a9261a",
+            "byte_size": 524288000,
+            "data_access": "open",
+            "format": ["application/json","text/csv"],
+            "host": {
+              "title": "TU Wien DBRepo",
+              "url": "https://test.dbrepo.tuwien.ac.at",
+              "description": "TU Wien DBRepo is a research data repository for relational databases supporting versioning, REST API access, and semantic metadata annotations.",
+              "storage_type": "institutional",
+              "support_versioning": "yes",
+              "pid_system": ["url"]
+            },
+            "license": [{"license_ref": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/", "start_date": "2026-05-26T00:00:00Z"}]
+          },
+          {
+            "title": "GitHub Repository",
+            "description": "SQL schema, loading scripts, and notebooks archived in GitHub repository.",
+            "access_url": "https://github.com/Chrisvenator/DaSt-2026",
+            "byte_size": 524288000,
+            "data_access": "open",
+            "format": ["text/plain","application/sql"],
+            "host": {
+              "title": "GitHub",
+              "url": "https://github.com",
+              "description": "GitHub is the best place to share code. Over three million people use GitHub to build amazing things together.",
+              "storage_type": "other",
+              "support_versioning": "yes",
+              "pid_system": [null]
+            },
+            "license": [{"license_ref": "https://spdx.org/licenses/MIT.html", "start_date": "2026-05-26T00:00:00Z"}]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.70124/3ykwc-3sg80",
+          "type": "doi"
+        },
+        "title": "Trained Accident Severity Classifier and FAIR4ML Metadata",
+        "description": "Trained scikit-learn Pipeline (RandomForestClassifier, class_weight=balanced) serialised as severity_rf_baseline_v1.joblib (34.26 MiB). Predicts accident severity (fatal/serious/slight) from 20 features. Trained on 6,686 records, evaluated on 1,672. Weighted F1: 0.673, Accuracy: 0.751. DOI: 10.70124/3ykwc-3sg80. Accompanied by FAIR4ML metadata. Released under CC BY 4.0.",
+        "type": "model",
+        "issued": "2026-05-26",
+        "language": "eng",
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "security_and_privacy": [],
+        "technical_resource": [],
+        "keyword": ["machine learning","random forest","severity prediction","FAIR4ML","scikit-learn","accident severity classification"],
+        "data_quality_assurance": [
+          "Stratified 80/20 split preserves class proportions (fatal ~2.4%, serious ~21.8%, slight ~75.8%) with fixed random seed 42.",
+          "Evaluation on held-out test set: accuracy 0.751, weighted F1 0.673, macro F1 0.322, ROC-AUC 0.605.",
+          "Per-class breakdown in Model Card and FAIR4ML file."
+        ],
+        "metadata": [
+          {
+            "description": "FAIR4ML metadata: algorithm (RandomForestClassifier, scikit-learn 1.8.0), hyperparameters, evaluation metrics, intended use, limitations, reproducibility block.",
+            "language": "eng",
+            "metadata_standard_id": {"identifier": "https://fair4ml.com", "type": "url"}
+          },
+          {
+            "description": "Model Card at docs/model-card.md: model description, intended use, out-of-scope uses, training data, evaluation results, limitations, ethical considerations, licence.",
+            "language": "eng",
+            "metadata_standard_id": {"identifier": "https://modelcards.withgoogle.com/about", "type": "url"}
+          }
+        ],
+        "distribution": [
+          {
+            "title": "TU Wien Research Data Repository – Model Deposit",
+            "description": "Trained model deposited on TU Wien Research Data Repository test instance.",
+            "access_url": "https://handle.test.datacite.org/10.70124/3ykwc-3sg80",
+            "download_url": "https://doi.org/10.70124/3ykwc-3sg80",
+            "byte_size": 35929702,
+            "data_access": "open",
+            "format": ["application/octet-stream","application/json"],
+            "host": {
+              "title": "TU Wien Research Data",
+              "url": "https://researchdata.tuwien.ac.at/",
+              "description": "TU Wien Research Data is an institutional repository for research data. A DOI is assigned to each published dataset.",
+              "storage_type": "institutional",
+              "support_versioning": "yes",
+              "pid_system": ["doi"]
+            },
+            "license": [{"license_ref": "https://creativecommons.org/licenses/by/4.0/", "start_date": "2026-05-26T00:00:00Z"}]
+          },
+          {
+            "title": "Zenodo",
+            "description": "Model mirrored on Zenodo via GitHub-Zenodo integration.",
+            "access_url": "https://doi.org/10.5281/zenodo.20182653",
+            "byte_size": 35929702,
+            "data_access": "open",
+            "format": ["application/octet-stream"],
+            "host": {
+              "title": "Zenodo",
+              "url": "https://zenodo.org/",
+              "description": "ZENODO enables researchers to share and showcase multidisciplinary research results with persistent DOIs.",
+              "storage_type": "other",
+              "support_versioning": "yes",
+              "pid_system": ["doi"]
+            },
+            "license": [{"license_ref": "https://creativecommons.org/licenses/by/4.0/", "start_date": "2026-05-26T00:00:00Z"}]
+          },
+          {
+            "title": "GitHub Repository",
+            "description": "Model training code and configuration archived on GitHub.",
+            "access_url": "https://github.com/Chrisvenator/DaSt-2026",
+            "byte_size": 35929702,
+            "data_access": "open",
+            "format": ["text/plain"],
+            "host": {
+              "title": "GitHub",
+              "url": "https://github.com",
+              "description": "GitHub is the best place to share code.",
+              "storage_type": "other",
+              "support_versioning": "yes",
+              "pid_system": [null]
+            },
+            "license": [{"license_ref": "https://creativecommons.org/licenses/by/4.0/", "start_date": "2026-05-26T00:00:00Z"}]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.70124/5zb61-c7k62",
+          "type": "doi"
+        },
+        "title": "Generated Experiment Outputs (Predictions, Metrics, Figures)",
+        "description": "Generated outputs from the accident severity classification experiment: test-set predictions CSV (1,672 rows with true/predicted labels and class probabilities); evaluation metrics JSON (accuracy, precision, recall, F1, ROC-AUC, confusion matrix); confusion matrix PNG (300 dpi). DOI: 10.70124/5zb61-c7k62. Released under CC BY 4.0.",
+        "type": "dataset",
+        "issued": "2026-05-26",
+        "language": "eng",
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "security_and_privacy": [],
+        "technical_resource": [],
+        "keyword": ["predictions","evaluation metrics","confusion matrix","road traffic accidents","severity classification","open science"],
+        "data_quality_assurance": [
+          "Predictions from held-out test set (1,672 records) not seen during training.",
+          "Metrics verified: accuracy=0.751, weighted F1=0.673, macro F1=0.322, ROC-AUC=0.605.",
+          "Confusion matrix verified against classification report."
+        ],
+        "metadata": [
+          {
+            "description": "RO-Crate 1.1 metadata describing all output files, authors, licences, and relationships to input data and trained model.",
+            "language": "eng",
+            "metadata_standard_id": {"identifier": "https://w3id.org/ro/crate/1.1", "type": "url"}
+          }
+        ],
+        "distribution": [
+          {
+            "title": "TU Wien Research Data Repository – Generated Data Deposit",
+            "description": "Generated outputs deposited on TU Wien Research Data Repository test instance.",
+            "access_url": "https://handle.test.datacite.org/10.70124/5zb61-c7k62",
+            "download_url": "https://doi.org/10.70124/5zb61-c7k62",
+            "data_access": "open",
+            "format": ["text/csv","application/json","image/png"],
+            "host": {
+              "title": "TU Wien Research Data",
+              "url": "https://researchdata.tuwien.ac.at/",
+              "description": "TU Wien Research Data is an institutional repository for research data. A DOI is assigned to each published dataset.",
+              "storage_type": "institutional",
+              "support_versioning": "yes",
+              "pid_system": ["doi"]
+            },
+            "license": [{"license_ref": "https://creativecommons.org/licenses/by/4.0/", "start_date": "2026-05-26T00:00:00Z"}]
+          },
+          {
+            "title": "Zenodo",
+            "description": "Generated outputs mirrored on Zenodo via GitHub-Zenodo integration.",
+            "access_url": "https://doi.org/10.5281/zenodo.20182653",
+            "data_access": "open",
+            "format": ["text/csv","application/json","image/png"],
+            "host": {
+              "title": "Zenodo",
+              "url": "https://zenodo.org/",
+              "description": "ZENODO enables researchers to share and showcase multidisciplinary research results with persistent DOIs.",
+              "storage_type": "other",
+              "support_versioning": "yes",
+              "pid_system": ["doi"]
+            },
+            "license": [{"license_ref": "https://creativecommons.org/licenses/by/4.0/", "start_date": "2026-05-26T00:00:00Z"}]
+          },
+          {
+            "title": "GitHub Repository",
+            "description": "Output files archived in GitHub repository.",
+            "access_url": "https://github.com/Chrisvenator/DaSt-2026",
+            "data_access": "open",
+            "format": ["text/csv","application/json","image/png"],
+            "host": {
+              "title": "GitHub",
+              "url": "https://github.com",
+              "description": "GitHub is the best place to share code.",
+              "storage_type": "other",
+              "support_versioning": "yes",
+              "pid_system": [null]
+            },
+            "license": [{"license_ref": "https://creativecommons.org/licenses/by/4.0/", "start_date": "2026-05-26T00:00:00Z"}]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://data.europa.eu/data/datasets/road-safety-data?locale=en",
+          "type": "url"
+        },
+        "title": "Road Safety Data – North Yorkshire STATS19 (2009–2013) – Original Source",
+        "description": "UK STATS19 road accident records for North Yorkshire, 2009–2013. Originally published by the UK Department for Transport under OGL v3.0. Accessed via the TU Wien DBRepo REST API. Contains 8,358 accident records covering severity, road conditions, weather, lighting, junction details, and geographic coordinates.",
+        "type": "dataset",
+        "issued": "2014-01-01",
+        "language": "eng",
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "security_and_privacy": [],
+        "technical_resource": [],
+        "keyword": ["road traffic accidents","STATS19","North Yorkshire","UK Department for Transport","open government data"],
+        "data_quality_assurance": [
+          "Original dataset published by UK Department for Transport under OGL v3.0.",
+          "Row count verified: 8,358 accident records consistent across source CSV and DBRepo re-publication."
+        ],
+        "metadata": [],
+        "distribution": [
+          {
+            "title": "European Data Portal",
+            "access_url": "https://data.europa.eu/data/datasets/road-safety-data?locale=en",
+            "data_access": "open",
+            "format": ["text/csv","application/vnd.ms-excel"],
+            "host": {
+              "title": "European Data Portal",
+              "url": "https://data.europa.eu",
+              "description": "The European Data Portal harvests metadata of Public Sector Information available on public data portals across European countries.",
+              "storage_type": "other",
+              "support_versioning": "no",
+              "pid_system": ["url"]
+            },
+            "license": [{"license_ref": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/", "start_date": "2014-01-01T00:00:00Z"}]
+          }
+        ]
+      }
+    ]
+  }
+}
