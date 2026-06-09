@@ -157,10 +157,10 @@ This will:
 
 | Name | Role | ORCID |
 |------|------|-------|
-| Christopher Scherling | T2.1 DBRepo schema, T3.1 RO-Crate, T3.5 Model Card, T3.9 Model deposit | [0009-0007-4090-3107](https://orcid.org/0009-0007-4090-3107) |
-| Muhamad Moghrabi | T2.2 Semantic mapping, T2.7 Release, T3.2 CodeMeta, T3.6 Licences, T3.10 Generated data deposit | [0009-0006-3778-025X](https://orcid.org/0009-0006-3778-025X) |
+| Muhamad Moghrabi | T2.1 DBRepo schema, T3.1 RO-Crate, T3.5 Model Card, T3.9 Model deposit | [0009-0006-3778-025X](https://orcid.org/0009-0006-3778-025X) |
+| Mehedy Hasan | T2.2 Semantic mapping, T2.7 Release, T3.2 CodeMeta, T3.6 Licences, T3.10 Generated data deposit | [0009-0002-4800-8178](https://orcid.org/0009-0002-4800-8178) |
 | Sravanthi Muthineni | T2.3 Unit mapping, T2.5 DBRepo load, T3.3 FAIR4ML, T3.7 README, T3.11 Standards overlap | [0009-0009-8778-4701](https://orcid.org/0009-0009-8778-4701) |
-| Mehedy Hasan | T2.4 View definitions, T2.6 API reimplementation, T3.4 Croissant, T3.8 Zenodo DOI | [0009-0002-4800-8178](https://orcid.org/0009-0002-4800-8178) |
+| Christopher Scherling | T2.4 View definitions, T2.6 API reimplementation, T3.4 Croissant, T3.8 Zenodo DOI | [0009-0007-4090-3107](https://orcid.org/0009-0007-4090-3107) |
 
 
 ## Directory layout
