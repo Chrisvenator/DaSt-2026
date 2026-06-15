@@ -167,15 +167,19 @@ This will:
 
 ```
 DaSt-2026/
-├── config/                  # configuration files
+├── config/                  # configuration files (data.yaml, model.yaml, eval.yaml)
 ├── data/
 │   ├── raw/                 # input datasets — never modified after deposit
-│   └── processed/           # derived / cleaned datasets
-├── docs/                    # reports, notes, references
+│   └── processed/           # derived / cleaned datasets (convention; created on demand)
+├── docs/                    # metadata, schema, model card, references
+│   └── validation/          # RO-Crate / metadata validation output
 ├── outputs/
 │   ├── figures/             # plots and visualisations
-│   └── models/              # serialised model artefacts
-└── src/                     # scripts and source code
+│   ├── metrics/             # evaluation metrics (JSON)
+│   ├── models/              # serialised model artefacts
+│   └── predictions/         # test-set predictions (CSV)
+├── report/                  # final DMP report and peer review
+└── src/                     # scripts, notebooks, and source code
 ```
 
 ---
